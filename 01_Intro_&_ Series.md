@@ -1,4 +1,4 @@
-# # Whai is Pnadas ? 
+# # What is Pnadas ? 
 
 - Pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 - `Documentation` - https://pandas.pydata.org/about/index.html
