@@ -10,6 +10,7 @@ import numpy as np                # Recommended
 import pandas as pd
 ```
 
+---
 
 # # Data Structures / Objects in Pandas
 
@@ -282,7 +283,7 @@ Name: runs, dtype: int64
 **(ii) `tail`**  
 
 - Return the last n rows.
-- **Syntax** - `series.tail(n)
+- **Syntax** - `series.tail(n)`
 - **Parameters** (n): int, default 5
 
 ``` py
@@ -298,7 +299,7 @@ Name: runs, dtype: int64
 **(iii) `sample`**
 
 - Return a random sample of items from an axis of object.
-- **Syntax** - `series.sample(n)
+- **Syntax** - `series.sample(n)`
 - **Parametrs** (n): int, float, bool (default false)
 
 ``` py
