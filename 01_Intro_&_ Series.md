@@ -215,7 +215,7 @@ marks_series.values           # Output : array([ 67,  57,  89, 100])
 
 - Upload file CSV in Project folder.
 - **`Squeeze`** -
-  - **Syntax** - dataframe.squeeze(axis)
+  - **Syntax** - `series.squeeze(axis)`
   - This method is most useful when you don’t know if your object is a Series or DataFrame, but you do know it has just a single column.
   - In that case you can safely call squeeze to ensure you have a Series.
   - **Parameter** - axis{0 or ‘index’, 1 or ‘columns’, None}, default None
@@ -256,11 +256,54 @@ Name: runs, Length: 215, dtype: int64
 
 ## Series Methods
 
+``` py
+vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
+vk
+```
 
+**(i) `head`**  
 
+- Return the first n rows.
+- **Syntax** - `series.head(n)`
+- **Parameters** (n): int, default 5
 
+``` py
+vk.head(3)
 
+# Output
 
+match_no
+1     1
+2    23
+3    13
+Name: runs, dtype: int64
+```
+
+**(ii) `tail`**  
+
+- Return the last n rows.
+- **Syntax** - `series.tail(n)
+- **Parameters** (n): int, default 5
+
+``` py
+vk.tail(3)
+
+match_no
+213    73
+214    25
+215     7
+Name: runs, dtype: int64
+```
+
+**(iii) `sample`**
+
+- Return a random sample of items from an axis of object.
+- **Syntax** - `series.sample(n)
+- **Parametrs** (n): int, float, bool (default false)
+
+``` py
+vk.sample(5)    # Output : 5 Random items from data
+```
 
 
 
