@@ -260,9 +260,12 @@ Name: runs, Length: 215, dtype: int64
 ``` py
 vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
 vk
+
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
 ```
 
-**(i) `head`**  
+**(i) `head()`**  
 
 - Return the first n rows.
 - **Syntax** - `series.head(n)`
@@ -280,7 +283,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(ii) `tail`**  
+**(ii) `tail()`**  
 
 - Return the last n rows.
 - **Syntax** - `series.tail(n)`
@@ -296,7 +299,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(iii) `sample`**
+**(iii) `sample()`**
 
 - Return a random sample of items from an axis of object.
 - **Syntax** - `series.sample(n)`
@@ -305,6 +308,122 @@ Name: runs, dtype: int64
 ``` py
 vk.sample(5)    # Output : 5 Random items from data
 ```
+
+**(iv) `value_count()`**
+
+- Return a Series containing counts of unique values.
+- **Syntax** - `series.value_counts()`
+- **Parametrs**: bool (default false)
+
+``` py
+movies.value_counts()
+
+# Output
+
+lead
+Akshay Kumar        48
+Amitabh Bachchan    45
+Ajay Devgn          38
+Salman Khan         31
+Sanjay Dutt         26
+                    ..
+Diganth              1
+Parveen Kaur         1
+Seema Azmi           1
+Akanksha Puri        1
+Edwin Fernandes      1
+Name: count, Length: 566, dtype: int64
+```
+
+**(v) `sort_values()`**
+
+- Sort a Series in ascending or descending order by some criterion.
+- **Syntax** - `series.sort_values()`
+- **Parametrs**: 0 or index, inplace, ascending (bool or list of bools, default True)
+  - **inplace** - Update the original series permanently
+
+``` py
+vk.sort_values(ascending=False)           # Sort in Descending order
+
+# Output
+
+match_no
+128    113
+126    109
+123    108
+164    100
+120    100
+      ... 
+93       0
+211      0
+130      0
+8        0
+135      0
+Name: runs, Length: 215, dtype: int64
+```
+
+**(vi) `sort_index`**
+
+- Returns a new Series sorted by label if inplace argument is False.
+- **Symtax** - `series.sort_index`
+- **Parametrs**: 0 or index, inplace, ascending (bool or list-like of bools, default True)
+
+``` py
+movies.sort_index()                       # Sort Index column
+
+
+# Output
+
+movie
+1920 (film)                   Rajniesh Duggall
+1920: London                     Sharman Joshi
+1920: The Evil Returns             Vicky Ahuja
+1971 (2007 film)                Manoj Bajpayee
+2 States (2014 film)              Arjun Kapoor
+                                   ...        
+Zindagi 50-50                      Veena Malik
+Zindagi Na Milegi Dobara        Hrithik Roshan
+Zindagi Tere Naam           Mithun Chakraborty
+Zokkomon                       Darsheel Safary
+Zor Lagaa Ke...Haiya!            Meghan Jadhav
+Name: lead, Length: 1500, dtype: object
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
