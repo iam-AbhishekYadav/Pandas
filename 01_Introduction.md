@@ -21,6 +21,7 @@ import pandas as pd
   - Stores heterogeneous data types.
   - Offers a variety of built-in methods for data manipulation and analysis.
 
+---
 
 ## Accessing elements of Series
 
@@ -65,6 +66,8 @@ ser = pd.Series(data,index=[10,11,12,13,14,15,16,17,18,19,20,21,22])
 print(ser[16])                                     # Output : o
 ```
 
+---
+
 ## Series from lists
 
 ### (i) String Series
@@ -104,22 +107,111 @@ dtype: int64
 ### (iii) Custom Index Series
 
 ``` py
+marks = [67,57,89,100]
+subjects = ['maths','english','science','hindi']
+
+pd.Series(marks,index=subjects)
+
+# Output
+
+maths       67
+english     57
+science     89
+hindi      100
+dtype: int64
 ```
 
+### (iv) Setting a Name of Series
 
+``` py
+marks = [67,57,89,100]
+subjects = ['maths','english','science','hindi']
 
+pd.Series(marks,index=subjects, name='Nitish ke marks')
 
+# Output
 
+maths       67
+english     57
+science     89
+hindi      100
+Name: Nitish ke marks, dtype: int64
+```
 
+---
 
+## Series from Dictionary
 
+``` py
+marks = {
+    'maths':67,
+    'english':57,
+    'science':89,
+    'hindi':100
+}
 
+marks_series = pd.Series(marks,name='nitish ke marks')
+marks_series
 
+# Output
 
+maths       67
+english     57
+science     89
+hindi      100
+Name: nitish ke marks, dtype: int64
+```
 
+---
 
+## Series Attributes
 
+``` py
+marks = {
+    'maths':67,
+    'english':57,
+    'science':89,
+    'hindi':100
+}
 
+marks_series = pd.Series(marks,name='nitish ke marks')
+marks_series
+```
+
+**(i) `Size`** - Return the number of elements in the underlying data.
+``` py
+marks_series.size              # Output : 4
+```
+  
+
+**(ii) `dtype`** - Return the dtype object of the underlying data.
+``` py
+marks_series.dtype             # Output : dtype('int64')
+```
+
+**(iii) `name`** - Return the name of the Series.
+``` py
+marks_series.name              # Output : nitish ke marks
+```
+
+**(iv) `is_unique`** - Return True if values in the object are unique.
+``` py
+marks_series.is_unique        # Output : True
+```
+
+**(v) `index`** - Generate Index values in a range
+``` py
+marks_series.index            # Output : Index(['maths', 'english', 'science', 'hindi'], dtype='object')
+```
+
+**(vi) `values`** - Return Series as ndarray or ndarray-like depending on the dtype.
+``` py
+marks_series.values           # Output : array([ 67,  57,  89, 100])
+```
+
+---
+
+## Series using read_CSV
 
 
 
