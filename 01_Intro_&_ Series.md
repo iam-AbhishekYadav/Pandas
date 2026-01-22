@@ -369,7 +369,7 @@ Name: runs, Length: 215, dtype: int64
 - **Parametrs**: 0 or index, inplace, ascending (bool or list-like of bools, default True)
 
 ``` py
-movies.sort_index()                       # Sort Index column
+movies.sort_index(ascending=True)                       # Sort Index column
 
 
 # Output
