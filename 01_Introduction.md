@@ -227,11 +227,12 @@ pd.read_csv('filePath.csv').squeeze("columns")
 
 ### Example :-
 
-> Upload CSV file of Virat Kholi Data in Project folder.
-> Data : How many runs has Virat kholi scored in rach match ?
+> Upload CSV file of Virat Kholi Data in Project folder.  
+> Data : How many runs has Virat kholi scored in each IPL match ?  
+> **index_col** - It selects Index Coloumn  
 
 ``` py
-vk = pd.read_csv('kohli_ipl.csv',index_col='match_no').squeeze(True)
+vk = pd.read_csv('kohli_ipl.csv',index_col='match_no').squeeze('columns')
 vk
 
 # Output
@@ -251,8 +252,9 @@ match_no
 Name: runs, Length: 215, dtype: int64
 ```
 
+---
 
-
+## Series Methods
 
 
 
