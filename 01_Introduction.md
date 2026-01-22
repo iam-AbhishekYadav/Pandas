@@ -213,6 +213,44 @@ marks_series.values           # Output : array([ 67,  57,  89, 100])
 
 ## Series using read_CSV
 
+- Upload file CSV in Project folder.
+- **`Squeeze`** -
+  - **Syntax** - dataframe.squeeze(axis)
+  - This method is most useful when you don’t know if your object is a Series or DataFrame, but you do know it has just a single column.
+  - In that case you can safely call squeeze to ensure you have a Series.
+  - **Parameter** - axis{0 or ‘index’, 1 or ‘columns’, None}, default None
+  - **Returns** - DataFrame, Series, or scalar
+
+``` py
+pd.read_csv('filePath.csv').squeeze("columns")
+```
+
+### Example :-
+
+> Upload CSV file of Virat Kholi Data in Project folder.
+> Data : How many runs has Virat kholi scored in rach match ?
+
+``` py
+vk = pd.read_csv('kohli_ipl.csv',index_col='match_no').squeeze(True)
+vk
+
+# Output
+
+match_no
+1       1
+2      23
+3      13
+4      12
+5       1
+       ..
+211     0
+212    20
+213    73
+214    25
+215     7
+Name: runs, Length: 215, dtype: int64
+```
+
 
 
 
