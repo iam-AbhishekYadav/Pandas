@@ -362,7 +362,7 @@ match_no
 Name: runs, Length: 215, dtype: int64
 ```
 
-**(vi) `sort_index`**
+**(vi) `sort_index()`**
 
 - Returns a new Series sorted by label if inplace argument is False.
 - **Symtax** - `series.sort_index`
@@ -389,8 +389,24 @@ Zor Lagaa Ke...Haiya!            Meghan Jadhav
 Name: lead, Length: 1500, dtype: object
 ```
 
+## Series Maths Method
 
+``` py
+vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
+vk
 
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
+```
+
+**(i) `count()`**
+
+- Return number of non-NA(Not Available/Not Applicable)/null observations in the Series.
+- **Syntax** - `Series.count()`
+
+``` py
+
+```
 
 
 
