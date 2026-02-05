@@ -388,6 +388,7 @@ Zokkomon                       Darsheel Safary
 Zor Lagaa Ke...Haiya!            Meghan Jadhav
 Name: lead, Length: 1500, dtype: object
 ```
+---
 
 ## Series Maths Method
 
@@ -397,6 +398,9 @@ vk
 
 movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
 movies
+
+subs = pd.read_csv('Data/subs.csv').squeeze("columns")
+subs
 ```
 
 **(i) `count()`**
@@ -405,17 +409,49 @@ movies
 - **Syntax** - `Series.count()`
 
 ``` py
-
+vk.count()                    # Output : 215 (No. of matches played by VK)
 ```
 
+**(ii) `sum()`**
 
+- Return the sum of the values over the requested axis.
+- **Syntax** - `Series.sum()`
+- **Parametrs**: axis:{index (0)} 
 
+``` py
+subs.sum()                   # Outputr : 49510
+```
 
+**(iii) `product()`**
 
+- Return the product  of the values over the requested axis.
+- **Syntax** - `Series.product()`
+- **Parametrs**: axis:{index (0)} 
 
+``` py
+subs.product ()                   # Outputr : 0  (There was a 0 in the middle of the data.)
+```
 
+**(iii) `mean(), median(), mode()`**
 
+- They all Return the mean/median/mode of the values over the requested axis.
+- **`Mean`** : The average of all numbers.
+- **`Median`** : The middle value when numbers are arranged in order.
+- **`Mode`** : The value that appears most frequently in the data.
+- **Syntax** -
+  - Mean : `Series.mean()`
+  - Median : `Series.median()`
+  - Mode : `Series.mode()`
+- **Parametrs**: 
+  - Mean : `axis:{index (0)}`
+  - Median : `axis:{index (0)}`
+  - Mode : `dropna: bool, default True`
 
+``` py        
+print(subs.mean())           # Outputr : 135.64383561643837
+print(vk.median())           # Outputr : 24.0
+print(movies.mode())         # Outputr : 0    Akshay Kumar
+```
 
 
 
