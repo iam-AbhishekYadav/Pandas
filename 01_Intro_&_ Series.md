@@ -419,7 +419,7 @@ vk.count()                    # Output : 215 (No. of matches played by VK)
 - **Parametrs**: axis:{index (0)} 
 
 ``` py
-subs.sum()                   # Outputr : 49510
+subs.sum()                   # Output : 49510
 ```
 
 **(iii) `product()`**
@@ -429,7 +429,7 @@ subs.sum()                   # Outputr : 49510
 - **Parametrs**: axis:{index (0)} 
 
 ``` py
-subs.product ()                   # Outputr : 0  (There was a 0 in the middle of the data.)
+subs.product ()                   # Output : 0  (There was a 0 in the middle of the data.)
 ```
 
 **(iii) `mean(), median(), mode()`**
@@ -448,28 +448,69 @@ subs.product ()                   # Outputr : 0  (There was a 0 in the middle of
   - Mode : `dropna: bool, default True`
 
 ``` py        
-print(subs.mean())           # Outputr : 135.64383561643837
-print(vk.median())           # Outputr : 24.0
-print(movies.mode())         # Outputr : 0    Akshay Kumar
+print(subs.mean())           # Output : 135.64383561643837
+print(vk.median())           # Output : 24.0
+print(movies.mode())         # Output : 0    Akshay Kumar
 ```
 
 
+**(iv) `std()`**
 
+- **`Standard Deviation`** : It shows how spread out the numbers are from the mean (average).
+  - **`Low standard deviation`** : values are close to the mean
+  - **`High standard deviation`** : values are far from the mean
+- **Syntax** - `Series.std()`
 
+``` py
+subs.std()           # Output : 62.6750230372527
+```
 
+**(v) `var()`**
 
+- **`Variance`** : It measures how much the data values spread out from the mean.
+  - **`Low standard deviation`** : values are close to the mean
+  - **`High standard deviation`** : values are far from the mean
+- **Syntax** - `Series.var()`
+- **Parametrs**: axis:{index (0)} 
 
+``` py
+vk.var()           # Output : 688.0024777222343
+```
 
+**(vi) `min(), max()`**
 
+- Return the minimum/maximum of the values over the requested axis.
+- **Syntax** -
+  - **Minimum** : `Series.min()`
+  - **Maximum** : `Series.max()`
 
+- **Parametrs**: axis:{index (0)} 
 
+``` py
+print(vk.min())         # Output : 0
+print(vk.max())         # Output : 113
+```
 
+**(vii) `describe()`**
 
+- Generate descriptive statistics.
+- **Syntax** - `Series.describe()`
 
+``` py
+vk.describe()
 
+# Output
 
-
-
+count    215.000000
+mean      30.855814
+std       26.229801
+min        0.000000
+25%        9.000000
+50%       24.000000
+75%       48.000000
+max      113.000000
+Name: runs, dtype: float64
+```
 
 
 
