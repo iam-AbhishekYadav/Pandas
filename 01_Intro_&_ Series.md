@@ -512,6 +512,107 @@ max      113.000000
 Name: runs, dtype: float64
 ```
 
+---
+
+
+## Series Indexing
+
+``` py
+vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
+vk
+
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
+
+subs = pd.read_csv('Data/subs.csv').squeeze("columns")
+subs
+```
+
+**(i) `Integer Indexing`**
+
+**(ii) `Negative Indexing`**
+
+**(iii) `Slicing`**
+
+- Selecting a portion of values from a Series using index position or label.
+
+> Index Position
+``` py
+vk[5:16]                         # How many runs VK scored in between 5 to 15 matches
+
+# Output
+
+match_no
+6      9
+7     34
+8      0
+9     21
+10     3
+11    10
+12    38
+13     3
+14    11
+15    50
+16     2
+Name: runs, dtype: int64
+```
+
+> Lalel
+``` py
+movies['Hum Tumhare Hain Sanam']                # Output : 'Shah Rukh Khan'
+```
+
+**(iv) `Negative Slicing`**
+
+- It allowing you to select elements from the end of a Series.
+
+``` py
+vk[-5:]                         # How many runs VK scored in last 5 matches
+
+# Output
+
+match_no
+211     0
+212    20
+213    73
+214    25
+215     7
+Name: runs, dtype: int64
+```
+
+**(v) `Fancy Indexing`**
+
+- Selecting multiple specific elements from a Series using a list of indices or labels.
+
+``` py
+vk[[1,3,5,7,9]]                         # How many runs VK scored in 1st, 3rd, 5th, 7th, 9th match
+
+# Output
+
+match_no
+1     1
+3    13
+5     1
+7    34
+9    21
+Name: runs, dtype: int64
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
