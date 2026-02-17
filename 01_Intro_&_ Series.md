@@ -598,6 +598,141 @@ match_no
 Name: runs, dtype: int64
 ```
 
+---
+
+
+## Series Indexing
+
+``` py
+marks = [67,57,89,100] 
+subjects = ['maths','english','science','hindi'] 
+marks_series = pd.Series(marks,index=subjects, name='Sachin ke marks')
+marks_series
+
+runs = [13,24,56,78,100]
+runs_ser = pd.Series(runs)
+runs_ser
+
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
+```
+
+**(i) `Using Indexing`**
+
+``` py
+marks_series.iloc[1] = 100 
+marks_series
+
+# Output
+
+maths       67
+english    100
+science     89
+hindi      100
+Name: Sachin ke marks, dtype: int64
+```
+
+**(ii) `What if an index does not exist`**
+
+``` py
+marks_series['sst'] = 75
+marks_series
+
+# Output
+
+maths       67
+english    100
+science     89
+hindi      100
+sst         75
+Name: Sachin ke marks, dtype: int64
+```
+
+**(iii) `Slicing`**
+
+``` py
+runs_ser[2:4] = [100,100]
+runs_ser
+
+# Output
+
+0     13
+1     24
+2    100
+3    100
+4    100
+dtype: int64
+```
+
+**(iv) `Fancy Indexing`**
+
+``` py
+runs_ser[[0,3,4]] = [0,0,0]
+runs_ser
+
+# Output
+
+0      0
+1     24
+2    100
+3      0
+4      0
+dtype: int64
+```
+
+**(vi) `Using Index Label`**
+
+``` py
+movies['Aankhen (2002 film)'] = 'Alia Bhatt'
+movies
+
+# Output
+
+movie
+Uri: The Surgical Strike                   Vicky Kaushal
+Battalion 609                                Vicky Ahuja
+The Accidental Prime Minister (film)         Anupam Kher
+Why Cheat India                            Emraan Hashmi
+Evening Shadows                         Mona Ambegaonkar
+                                              ...       
+Hum Tumhare Hain Sanam                    Shah Rukh Khan
+Aankhen (2002 film)                           Alia Bhatt                    ---> Amitabh Bachchan to Alia Bhatt
+Saathiya (film)                             Vivek Oberoi
+Company (film)                                Ajay Devgn
+Awara Paagal Deewana                        Akshay Kumar
+Name: lead, Length: 1500, dtype: str
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
