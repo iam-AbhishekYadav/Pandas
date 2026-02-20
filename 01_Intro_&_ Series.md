@@ -821,6 +821,66 @@ match_no
 Name: runs, Length: 215, dtype: bool
 ```
 
+---
+
+## Boolean Indexing on Series
+
+``` py
+vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
+vk
+
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
+
+subs = pd.read_csv('subs.csv').squeeze("columns")
+subs
+```
+
+**(i) `Find no. of 50's and 100's scored by Kholi`**
+
+``` py
+vk[vk >= 50]                   # Output : Gives list of 50's and 100's scored by Kholi
+vk[vk >= 50].size              # Output : 50
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
