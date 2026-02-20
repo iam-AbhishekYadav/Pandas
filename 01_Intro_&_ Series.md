@@ -705,6 +705,162 @@ Name: lead, Length: 1500, dtype: str
 
 ---
 
+## Series Python Functionalities
+
+
+``` py
+vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
+vk
+
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
+
+subs = pd.read_csv('Data/subs.csv').squeeze("columns")
+subs
+
+marks = [67,57,89,100] 
+subjects = ['maths','english','science','hindi'] 
+marks_series = pd.Series(marks,index=subjects, name='Sachin ke marks')
+marks_series
+```
+
+**(i) `len`** --> It returns the number of items (length) in an object.  
+**(ii) `type`** --> It returns the data type of a variable or object.  
+**(iii) `dir`** --> It returns a list of all attributes and methods of an object.  
+**(iv) `sorted`** --> It returns a new sorted list from any iterable (like list, tuple, string, dictionary).  
+**(v) `max`** --> It returns the largest value.  
+**(vi) `min`** --> It returns the smallest value.  
+
+``` py
+print(len(subs))                      # Output : 365
+print(type(subs))                     # Output : <class 'pandas.Series'>
+print(dir(subs))                      # Output : ['T', '_AXIS_LEN', '_AXIS_ORDERS', '_AXIS_TO_AXIS_NUMBER'....]
+print(sorted(subs))                   # Output : [33, 33, 35, 37, 39, 40, ..... 290, 295, 301, 306, 312, 396]
+print(min(subs))                      # Output : 33
+print(max(subs))                      # Output : 396
+```
+
+**(vii) `type conversion`** 
+
+- Type conversion means changing one data type into another.
+- There are two types
+  - Implicit Type Conversion (automatic)
+  - Explicit Type Conversion (manual) 
+
+``` py
+list(marks_series)                       # Output : [67, 57, 89, 100]
+
+dict(marks_series.index)                 # Output : ['maths', 'english', 'science', 'hindi']
+
+dict(marks_series)                       # Output : {'maths': 67,
+                                         #           'english': 57,
+                                         #           'science': 89,
+                                         #           'hindi': 100}
+```
+
+
+**(viii) `membership operator`**
+
+- Membership Operator is `in` or `not in`
+- It is used to check whether a value exists inside a Series.
+
+``` py
+'Hum Tumhare Hain Sanam' in movies            # Output : True 
+
+'Shah Rukh Khan' in movies.values             # Output : True
+```
+
+
+**(ix) `looping`**
+
+- It is used when we know how many times to repeat.
+
+``` py
+for i in movies:
+  print(i)                             # Output : Print all movies form data
+
+for j in movies.index:
+  print(j)                             # Output : Print all actors name (index values) form data
+```
+
+
+**(x) `Arithmetic Operator`**
+
+- It is used to perform mathematical calculations.
+
+``` py
+100 + marks_series
+
+# Output
+
+maths      167
+english    157
+science    189
+hindi      200
+Name: Sachin ke marks, dtype: int64
+```
+
+**(xi) `Relational Operators`**
+
+- It is used to compare two values.
+- It return a Boolean result: True or False.
+
+``` py
+vk >=50
+
+# Output
+
+match_no
+1      False
+2      False
+3      False
+       ...  
+213     True
+214    False
+215    False
+Name: runs, Length: 215, dtype: bool
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
