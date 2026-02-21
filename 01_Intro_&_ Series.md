@@ -1098,66 +1098,151 @@ temp.dropna()
 dtype: float64
 ```
 
+**(vii) `fillna()`**
 
+-  It is used to replace missing (NaN) values in a Pandas Series.
+-  It can be filled by Mean, Meadian, etc.
+-  **Forward Fill (ffill)** - Copies the previous value down.
+   - `Series.ffill()`
+- **Backward Fill (bfill)** - Uses the next value.
+  - `Series.bfill()`
 
+``` py
+temp = pd.Series([1,np.nan,3,np.nan,5])
+temp
 
+temp.fillna(0)
 
+# Output
+0    1.0
+1    0.0
+2    3.0
+3    0.0
+4    5.0
+dtype: float64
 
+temp.fillna(temp.mean())
 
+# Output
+0    1.0
+1    1.0
+2    3.0
+3    3.0
+4    5.0
+dtype: float64
 
+temp.ffill()
 
+# Output
+0    1.0
+1    3.0
+2    3.0
+3    3.0
+4    5.0
+dtype: float64
+```
 
+**(viii) `isin()`**
 
+- It is used to check whether each value in a Series exists in a given list (or another Series).
+- It returns a Boolean Series:
+  - True → value is present
+  - False → value is not present
 
+``` py
+vk.isin([49, 99])               # Output : Gives boolean result
 
+vk[vk.isin([49, 99])]
 
+# Output
+match_no
+82    99
+86    49
+Name: runs, dtype: int64
+```
 
+**(ix) `apply()`**
 
+- It is used to apply a function to each value of a Pandas Series.
+- It works like a loop, but in a cleaner way.
+- **Syntax** - `Series.apply(function)`
 
+``` py
+movies.apply(lambda x: x.split(' ')[0].upper())                  # Output : Gives first name of actor in capital letters
 
+# Output
+movie
+Uri: The Surgical Strike                  VICKY
+Battalion 609                             VICKY
+The Accidental Prime Minister (film)     ANUPAM
+Why Cheat India                          EMRAAN
+Evening Shadows                            MONA
+                                         ...   
+Hum Tumhare Hain Sanam                     SHAH
+Aankhen (2002 film)                     AMITABH
+Saathiya (film)                           VIVEK
+Company (film)                             AJAY
+Awara Paagal Deewana                     AKSHAY
+Name: lead, Length: 1500, dtype: str
+```
 
+> The day you get more than average subscribers is a good day, otherwise it is a bad day.
+``` py
+subs.mean()                    # Output : 135.64383561643837
 
+subs.apply(lambda x:'Good Day' if x>subs.mean() else 'Bad Day')
 
+# Output
+0       Bad Day
+1       Bad Day
+2       Bad Day
+3       Bad Day
+4       Bad Day
+         ...   
+360    Good Day
+361    Good Day
+362    Good Day
+363    Good Day
+364    Good Day
+Name: Subscribers gained, Length: 365, dtype: str
+```
 
+**(x) `copy()`**
 
+- It is used to create a separate (independent) copy of a Series.
+- This prevents changes in one variable from affecting the original data.
+- Without copy(), two variables may refer to the same data in memory. 
 
+> Without copy() (Problem)
+``` py
+s1 = pd.Series([10, 20, 30])
+s2 = s1   # No copy
 
+s2[0] = 100
 
+print(s1)
 
+# Output : Original s1 changed too!
+0    100
+1     20
+2     30
+dtype: int64
+```
 
+> With copy() (Correct Way)
+``` py
+s1 = pd.Series([10, 20, 30])
+s2 = s1.copy()
 
+s2[0] = 100
 
+print(s1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Output : Now s1 remains unchanged.
+0    10
+1    20
+2    30
+dtype: int64
+```
 
 
