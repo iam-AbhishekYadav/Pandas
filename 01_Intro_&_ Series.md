@@ -843,6 +843,43 @@ vk[vk >= 50]                   # Output : Gives list of 50's and 100's scored by
 vk[vk >= 50].size              # Output : 50
 ```
 
+**(ii) `Find the number of ducks`**
+
+``` py
+vk[vk == 0]                 # Output : Gives list of 0's scored by Kholi
+vk[vk == 0].size            # Output : 9
+```
+
+**(iii) `Count number of days when I had more than 200 subscibers a day`**
+
+``` py
+subs[subs > 200].size       # Output : 59
+```
+
+**(iv) `Find actors who have done more than 20 movies`**
+
+``` py
+num_movies = movies.value_counts()
+num_movies[num_movies > 20]
+
+# Output
+
+lead
+Akshay Kumar        48
+Amitabh Bachchan    45
+Ajay Devgn          38
+Salman Khan         31
+Sanjay Dutt         26
+Shah Rukh Khan      22
+Emraan Hashmi       21
+Name: count, dtype: int64
+```
+
+
+
+
+
+
 
 
 
