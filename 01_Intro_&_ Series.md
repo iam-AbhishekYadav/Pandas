@@ -903,4 +903,181 @@ movies.value_counts().head(20).plot(kind='pie')         # Output : Gives a Pie c
 
 <img src="https://github.com/user-attachments/assets/66cb1a06-a6c0-4867-a637-673ee45e0217" width="550" height="400" />
 
+---
+
+# # Some Important Series Methods 
+
+``` py
+vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
+vk
+
+movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
+movies
+
+subs = pd.read_csv('subs.csv').squeeze("columns")
+subs
+```
+
+**(i) `astype()`**
+
+- It is is used to change the data type of a Pandas Series.
+- It helps reduce memory usage
+- It Ensures correct calculations.
+
+``` py
+import sys
+
+sys.getsizeof(vk)                              # Output : 1884
+
+vk.astype('int16')                             # Output : Change dtype to int16
+sys.getsizeof(vk.astype('int16'))              # Output : 594
+```
+
+**(ii) `between()`**
+
+- It is used to check whether values in a Series fall within a specified range.
+- It returns a Boolean Series (True / False).
+- **Syntax** : `Series.between(left, right, inclusive='both')`
+  - **left** → lower limit
+  - **right** → upper limit
+  - **inclusive** → include boundaries or not
+
+``` py
+vk.between(50,99)
+
+# Output
+match_no
+1      False
+2      False
+3      False
+       ...  
+214    False
+215    False
+Name: runs, Length: 215, dtype: bool
+
+vk[vk.between(50,99)]
+
+# Output
+match_no
+15     50
+34     58
+41     71
+...
+197    51
+198    53
+209    58
+213    73
+Name: runs, dtype: int64
+
+vk[vk.between(50,99)].size        # Output : 45
+```
+
+**(iii) `drop_duplicates()`**
+
+- It removes repeated values from a Series and keeps only unique ones (based on your settings).
+- **Syntax** : `Series.drop_duplicates(subset=None, keep='first', inplace=False)`
+  - **subset** → column(s) to check duplicates
+  - **keep** → which duplicate to keep ('first', 'last', False)
+  - **inplace** → modify original data (True or False)
+
+``` py
+temp = pd.Series([1,1,2,2,3,3,4,4,5,5])
+temp
+
+# Output
+0    1
+1    1
+2    2
+3    2
+4    3
+5    3
+6    4
+7    4
+8    5
+9    5
+dtype: int64
+
+temp.drop_duplicates()
+
+# Output
+0    1
+2    2
+4    3
+6    4
+8    5
+dtype: int64
+
+temp.drop_duplicates(keep='last')
+
+# Output
+1    1
+3    2
+5    3
+7    4
+9    5
+dtype: int64
+```
+
+**(iv) `duplicated()`**
+
+- It is used to detect duplicate values in a Series.
+- It returns a Boolean Series:
+  - **True** → duplicate
+  - **False** → not duplicate
+
+
+``` py
+temp = pd.Series([1,1,2,2,3,3,4,4,5,5])
+temp
+
+temp.duplicated()
+
+# Output
+0    False
+1     True
+2    False
+3     True
+4    False
+5     True
+6    False
+7     True
+8    False
+9     True
+dtype: bool
+
+temp.duplicated().sum()              # Output : 5
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
