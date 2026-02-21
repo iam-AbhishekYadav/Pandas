@@ -1048,6 +1048,86 @@ dtype: bool
 temp.duplicated().sum()              # Output : 5
 ```
 
+**(v) `isnull()`**
+
+- It is used to detect missing (NaN) values in a Pandas Series.
+- It returns a Boolean Series:
+  - **True** → value is missing
+  - **False** → value is not missing
+
+``` py
+temp = pd.Series([1,2,3,np.nan,5,6,np.nan,8,np.nan,10])
+temp
+
+temp.isnull()
+
+# Output
+0    False
+1    False
+2    False
+3     True
+4    False
+5    False
+6     True
+7    False
+8     True
+9    False
+dtype: bool
+
+temp.isnull().sum()           # Output : 3
+```
+
+**(ii) `dropna()`**
+
+ - It is used to remove missing (NaN) values from a Series.
+
+``` py
+temp = pd.Series([1,2,3,np.nan,5,6,np.nan,8,np.nan,10])
+temp
+
+temp.dropna()
+
+# Output
+0     1.0
+1     2.0
+2     3.0
+4     5.0
+5     6.0
+7     8.0
+9    10.0
+dtype: float64
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
