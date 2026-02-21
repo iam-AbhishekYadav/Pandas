@@ -724,12 +724,12 @@ marks_series = pd.Series(marks,index=subjects, name='Sachin ke marks')
 marks_series
 ```
 
-**(i) `len`** --> It returns the number of items (length) in an object.  
-**(ii) `type`** --> It returns the data type of a variable or object.  
-**(iii) `dir`** --> It returns a list of all attributes and methods of an object.  
-**(iv) `sorted`** --> It returns a new sorted list from any iterable (like list, tuple, string, dictionary).  
-**(v) `max`** --> It returns the largest value.  
-**(vi) `min`** --> It returns the smallest value.  
+**(i) `len()`** --> It returns the number of items (length) in an object.  
+**(ii) `type()`** --> It returns the data type of a variable or object.  
+**(iii) `dir()`** --> It returns a list of all attributes and methods of an object.  
+**(iv) `sorted()`** --> It returns a new sorted list from any iterable (like list, tuple, string, dictionary).  
+**(v) `max()`** --> It returns the largest value.  
+**(vi) `min()`** --> It returns the smallest value.  
 
 ``` py
 print(len(subs))                      # Output : 365
