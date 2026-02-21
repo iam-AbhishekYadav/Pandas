@@ -1077,7 +1077,7 @@ dtype: bool
 temp.isnull().sum()           # Output : 3
 ```
 
-**(ii) `dropna()`**
+**(vi) `dropna()`**
 
  - It is used to remove missing (NaN) values from a Series.
 
