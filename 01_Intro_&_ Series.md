@@ -972,7 +972,34 @@ Name: runs, dtype: int64
 vk[vk.between(50,99)].size        # Output : 45
 ```
 
-**(iii) `drop_duplicates()`**
+**(iii) `clip()`**
+
+- It is used to limit (cap) values within a specified range.
+- If a value is:
+  - Below the minimum → it becomes the minimum
+  - Above the maximum → it becomes the maximum
+- **Syntax** - `Series.clip(lower=None, upper=None)`
+
+
+``` py
+subs.clip(100,200)
+
+# Output
+0      100
+1      100
+2      100
+3      100
+4      100
+      ... 
+360    200
+361    200
+362    155
+363    144
+364    172
+Name: Subscribers gained, Length: 365, dtype: int64
+```
+
+**(iv) `drop_duplicates()`**
 
 - It removes repeated values from a Series and keeps only unique ones (based on your settings).
 - **Syntax** : `Series.drop_duplicates(subset=None, keep='first', inplace=False)`
@@ -1018,7 +1045,7 @@ temp.drop_duplicates(keep='last')
 dtype: int64
 ```
 
-**(iv) `duplicated()`**
+**(v) `duplicated()`**
 
 - It is used to detect duplicate values in a Series.
 - It returns a Boolean Series:
@@ -1048,7 +1075,7 @@ dtype: bool
 temp.duplicated().sum()              # Output : 5
 ```
 
-**(v) `isnull()`**
+**(vi) `isnull()`**
 
 - It is used to detect missing (NaN) values in a Pandas Series.
 - It returns a Boolean Series:
@@ -1077,7 +1104,7 @@ dtype: bool
 temp.isnull().sum()           # Output : 3
 ```
 
-**(vi) `dropna()`**
+**(vii) `dropna()`**
 
  - It is used to remove missing (NaN) values from a Series.
 
@@ -1098,7 +1125,7 @@ temp.dropna()
 dtype: float64
 ```
 
-**(vii) `fillna()`**
+**(viii) `fillna()`**
 
 -  It is used to replace missing (NaN) values in a Pandas Series.
 -  It can be filled by Mean, Meadian, etc.
@@ -1142,7 +1169,7 @@ temp.ffill()
 dtype: float64
 ```
 
-**(viii) `isin()`**
+**(ix) `isin()`**
 
 - It is used to check whether each value in a Series exists in a given list (or another Series).
 - It returns a Boolean Series:
@@ -1161,7 +1188,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(ix) `apply()`**
+**(x) `apply()`**
 
 - It is used to apply a function to each value of a Pandas Series.
 - It works like a loop, but in a cleaner way.
@@ -1207,7 +1234,7 @@ subs.apply(lambda x:'Good Day' if x>subs.mean() else 'Bad Day')
 Name: Subscribers gained, Length: 365, dtype: str
 ```
 
-**(x) `copy()`**
+**(xi) `copy()`**
 
 - It is used to create a separate (independent) copy of a Series.
 - This prevents changes in one variable from affecting the original data.
