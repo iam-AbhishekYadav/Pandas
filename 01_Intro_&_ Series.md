@@ -875,6 +875,32 @@ Emraan Hashmi       21
 Name: count, dtype: int64
 ```
 
+## Plotting Graphs on Series
+
+**(i) `2D Chart`**
+
+``` py
+subs.plot()            # Output : Give a Graph
+```
+
+<img src="https://github.com/user-attachments/assets/3e768ea5-3d49-429e-88b9-7f5604f7a82e" width="550" height="400" />
+
+**(ii) `Bar Chat`**
+
+``` py
+movies.value_counts().head(20).plot(kind='bar')         # Output : Gives a Bar chat of top 20 actors with most movies done
+```
+
+<img src="https://github.com/user-attachments/assets/4e6f0b3d-9c73-499f-a9a9-faca6e554709" width="550" height="400" />
+
+**(iii) `Pie Chat`**
+
+``` py
+movies.value_counts().head(20).plot(kind='pie')         # Output : Gives a Pie chat of top 20 actors with most movies done
+```
+
+<img src="https://github.com/user-attachments/assets/66cb1a06-a6c0-4867-a637-673ee45e0217" width="550" height="400" />
+
 
 
 
