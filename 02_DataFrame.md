@@ -203,8 +203,15 @@ movies.head()                  # Output : Gives first 5 rows
 movies.tail()                  # Output : Gives last 5 rows
 ```
 
+**(vii) `sample()`**
 
+- Return a random sample of items from an axis of object.
+- **Syntax** - `DataFrame.sample(n)`
+- **Parametrs** (n): int, float, bool (default false)
 
+``` py
+movies.sample(5)    # Output : 5 Random items from data
+```
 
 
 
