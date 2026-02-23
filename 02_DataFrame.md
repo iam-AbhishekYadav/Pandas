@@ -189,10 +189,10 @@ array([[100,  80,  10],
        [ 80,  50,   2]])
 ```
 
-**(vi) `head and tail`**
+**(vi) `head() and tail()`**
 
-- **head** : Return the first n rows.
-- **tail** : Return the last n rows.
+- **head()** : Return the first n rows.
+- **tail()** : Return the last n rows.
 - Default n is 5 in both head and tail
 - **Syntax** :
   - DataFrame.head(n=5)
