@@ -39,44 +39,12 @@ Students
 
 > Output of (i) & (ii)
 
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>IQ</th>
-      <th>Marks</th>
-      <th>Packages</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>100</td>
-      <td>80</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>90</td>
-      <td>70</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>120</td>
-      <td>100</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>80</td>
-      <td>50</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+|   | IQ  | Marks | Packages |
+|---|-----|-------|----------|
+| 0 | 100 | 80    | 10       |
+| 1 | 90  | 70    | 7        |
+| 2 | 120 | 100   | 14       |
+| 3 | 80  | 50    | 2        |
 
 
 ### (iii) Using CSV
@@ -212,6 +180,113 @@ movies.tail()                  # Output : Gives last 5 rows
 ``` py
 movies.sample(5)    # Output : 5 Random items from data
 ```
+
+**(viii) `info()`**
+
+- This method prints information about a DataFrame including the index dtype and columns, non-NA values and memory usage.
+- **Synhtax** : `DataFrame.info()`
+
+``` py
+movies.info()
+
+# Output
+<class 'pandas.DataFrame'>
+RangeIndex: 1629 entries, 0 to 1628
+Data columns (total 18 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   title_x           1629 non-null   str    
+ 1   imdb_id           1629 non-null   str    
+ 2   poster_path       1526 non-null   str    
+ 3   wiki_link         1629 non-null   str    
+ 4   title_y           1629 non-null   str    
+ 5   original_title    1629 non-null   str    
+ 6   is_adult          1629 non-null   int64  
+ 7   year_of_release   1629 non-null   int64  
+ 8   runtime           1629 non-null   str    
+ 9   genres            1629 non-null   str    
+ 10  imdb_rating       1629 non-null   float64
+ 11  imdb_votes        1629 non-null   int64  
+ 12  story             1609 non-null   str    
+ 13  summary           1629 non-null   str    
+ 14  tagline           557 non-null    str    
+ 15  actors            1624 non-null   str    
+ 16  wins_nominations  707 non-null    str    
+ 17  release_date      1522 non-null   str    
+dtypes: float64(1), int64(3), str(14)
+memory usage: 229.2 KB
+```
+
+**(ix) `describe()`**
+
+- Generate descriptive statistics.
+- **Syntax** - `DataFrame.describe()`
+
+``` py
+movies.describe()
+```
+
+> Output
+
+|        | is_adult | year_of_release | imdb_rating | imdb_votes |
+|--------|----------|----------------|------------|------------|
+| count  | 1629.0   | 1629.000000    | 1629.000000| 1629.000000|
+| mean   | 0.0      | 2010.263966    | 5.557459   | 5384.263352|
+| std    | 0.0      | 5.381542       | 1.567609   | 14552.103231|
+| min    | 0.0      | 2001.000000    | 0.000000   | 0.000000   |
+| 25%    | 0.0      | 2005.000000    | 4.400000   | 233.000000 |
+| 50%    | 0.0      | 2011.000000    | 5.600000   | 1000.000000|
+| 75%    | 0.0      | 2015.000000    | 6.800000   | 4287.000000|
+| max    | 0.0      | 2019.000000    | 9.400000   | 310481.000000|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
