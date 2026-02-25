@@ -58,6 +58,8 @@ movies = pd.read_csv('movies.csv')
 movies
 ```
 
+---
+
 ## DataFrame Attributes and Methods
 
 ``` py
@@ -331,7 +333,9 @@ Students.rename(columns={'Marks': 'Percentage', 'Packages': 'LPA'}, inplace = Tr
 | 3 | 80  | 50    | 2        |
 
 
+---
 
+## DataFrame Maths Method
 
 
 
