@@ -337,6 +337,8 @@ Students.rename(columns={'Marks': 'Percentage', 'Packages': 'LPA'}, inplace = Tr
 
 ## DataFrame Maths Method
 
+> Same as Series maths methods 
+
 
 
 
