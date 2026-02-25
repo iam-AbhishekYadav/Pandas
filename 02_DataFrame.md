@@ -70,7 +70,7 @@ ipl = pd.read_csv('ipl-matches.csv')
 ipl
 ```
 
-**(i) `shape`**
+### (i) shape
 
 - Return a tuple representing the dimensionality of the DataFrame.
 - **Syntax** : `DataFrame.shape`
@@ -80,7 +80,7 @@ movies.shape              # Output : (1629, 18)
 ipl.shape                 # Output : (950, 20)
 ```
 
-**(ii) `dtype`**
+### (ii) dtype
 
 - Return the dtypes in the DataFrame.
 - This returns a Series with the data type of each column.
@@ -111,7 +111,7 @@ release_date            str
 dtype: object
 ```
 
-**(iii) `index`**
+### (iii) index
 
 - The index of a DataFrame is a series of labels that identify each row.
 - The labels can be integers, strings, or any other hashable type.
@@ -122,7 +122,7 @@ movies.index              # Output : RangeIndex(start=0, stop=1629, step=1)
 ipl.index                 # Output : RangeIndex(start=0, stop=950, step=1)
 ```
 
-**(iv) `columns`**
+### (iv) columns
 
 - This property holds the column names as a pandas Index object.
 - It provides an immutable sequence of column labels that can be used for data selection, renaming, and alignment in DataFrame operations.
@@ -139,7 +139,7 @@ Index(['title_x', 'imdb_id', 'poster_path', 'wiki_link', 'title_y',
       dtype='str')
 ```
 
-**(v) `values`**
+### (v) values
 
 - Returns 2D Numpy array
 - **Syntax** : `DataFrame.values`
@@ -159,7 +159,7 @@ array([[100,  80,  10],
        [ 80,  50,   2]])
 ```
 
-**(vi) `head() and tail()`**
+### (vi) head() and tail()
 
 - **head()** : Return the first n rows.
 - **tail()** : Return the last n rows.
@@ -173,7 +173,7 @@ movies.head()                  # Output : Gives first 5 rows
 movies.tail()                  # Output : Gives last 5 rows
 ```
 
-**(vii) `sample()`**
+### (vii) sample()
 
 - Return a random sample of items from an axis of object.
 - **Syntax** - `DataFrame.sample(n)`
@@ -183,7 +183,7 @@ movies.tail()                  # Output : Gives last 5 rows
 movies.sample(5)    # Output : 5 Random items from data
 ```
 
-**(viii) `info()`**
+### (viii) info()
 
 - This method prints information about a DataFrame including the index dtype and columns, non-NA values and memory usage.
 - **Synhtax** : `DataFrame.info()`
@@ -219,7 +219,7 @@ dtypes: float64(1), int64(3), str(14)
 memory usage: 229.2 KB
 ```
 
-**(ix) `describe()`**
+### (ix) describe()
 
 - Generate descriptive statistics.
 - **Syntax** - `DataFrame.describe()`
@@ -242,7 +242,7 @@ movies.describe()
 | max    | 0.0      | 2019.000000    | 9.400000   | 310481.000000|
 
 
-**(x) `isnull`**
+### (x) isnull
 
 - Detect missing values.
 - Return a boolean same-sized object indicating if the values are NA.
@@ -277,7 +277,7 @@ release_date         107
 dtype: int64
 ```
 
-**(xi) `duplicated()`**
+### (xi) duplicated()
 
 - It is used to detect duplicate values(rows) in a DataFrame.
 - It returns a Boolean DataFrame:
@@ -305,7 +305,7 @@ Length: 1629, dtype: bool
 movies.duplicated().sum()                # Output : 0
 ```
 
-**(xii) `rename`**
+### (xii) rename
 
 - Rename columns or index labels.
 - **Syntax** : `DataFrame.rename(columns={'old_name': 'new_name'}, inplace=True)`
