@@ -265,7 +265,7 @@ movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
 movies
 ```
 
-**(i) `head()`**  
+### (i) head()  
 
 - Return the first n rows.
 - **Syntax** - `series.head(n)`
@@ -283,7 +283,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(ii) `tail()`**  
+### (ii) tail()
 
 - Return the last n rows.
 - **Syntax** - `series.tail(n)`
@@ -299,7 +299,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(iii) `sample()`**
+### (iii) sample()
 
 - Return a random sample of items from an axis of object.
 - **Syntax** - `series.sample(n)`
@@ -309,7 +309,7 @@ Name: runs, dtype: int64
 vk.sample(5)    # Output : 5 Random items from data
 ```
 
-**(iv) `value_count()`**
+### (iv) value_count()
 
 - Return a Series containing counts of unique values.
 - **Syntax** - `series.value_counts()`
@@ -335,7 +335,7 @@ Edwin Fernandes      1
 Name: count, Length: 566, dtype: int64
 ```
 
-**(v) `sort_values()`**
+### (v) sort_values()
 
 - Sort a Series in ascending or descending order by some criterion.
 - **Syntax** - `series.sort_values()`
@@ -362,7 +362,7 @@ match_no
 Name: runs, Length: 215, dtype: int64
 ```
 
-**(vi) `sort_index()`**
+### (vi) sort_index()
 
 - Returns a new Series sorted by label if inplace argument is False.
 - **Symtax** - `series.sort_index`
@@ -403,7 +403,7 @@ subs = pd.read_csv('Data/subs.csv').squeeze("columns")
 subs
 ```
 
-**(i) `count()`**
+### (i) count()
 
 - Return number of non-NA(Not Available/Not Applicable)/null observations in the Series.
 - **Syntax** - `Series.count()`
@@ -412,7 +412,7 @@ subs
 vk.count()                    # Output : 215 (No. of matches played by VK)
 ```
 
-**(ii) `sum()`**
+### (ii) sum()
 
 - Return the sum of the values over the requested axis.
 - **Syntax** - `Series.sum()`
@@ -422,7 +422,7 @@ vk.count()                    # Output : 215 (No. of matches played by VK)
 subs.sum()                   # Output : 49510
 ```
 
-**(iii) `product()`**
+### (iii) product()
 
 - Return the product  of the values over the requested axis.
 - **Syntax** - `Series.product()`
@@ -432,7 +432,7 @@ subs.sum()                   # Output : 49510
 subs.product ()                   # Output : 0  (There was a 0 in the middle of the data.)
 ```
 
-**(iii) `mean(), median(), mode()`**
+### (iii) mean(), median(), mode()
 
 - They all Return the mean/median/mode of the values over the requested axis.
 - **`Mean`** : The average of all numbers.
@@ -454,7 +454,7 @@ print(movies.mode())         # Output : 0    Akshay Kumar
 ```
 
 
-**(iv) `std()`**
+### (iv) std()
 
 - **`Standard Deviation`** : It shows how spread out the numbers are from the mean (average).
   - **`Low standard deviation`** : values are close to the mean
@@ -465,7 +465,7 @@ print(movies.mode())         # Output : 0    Akshay Kumar
 subs.std()           # Output : 62.6750230372527
 ```
 
-**(v) `var()`**
+### (v) var()
 
 - **`Variance`** : It measures how much the data values spread out from the mean.
   - **`Low standard deviation`** : values are close to the mean
@@ -477,7 +477,7 @@ subs.std()           # Output : 62.6750230372527
 vk.var()           # Output : 688.0024777222343
 ```
 
-**(vi) `min(), max()`**
+### (vi) min(), max()
 
 - Return the minimum/maximum of the values over the requested axis.
 - **Syntax** -
@@ -491,7 +491,7 @@ print(vk.min())         # Output : 0
 print(vk.max())         # Output : 113
 ```
 
-**(vii) `describe()`**
+### (vii) describe()
 
 - Generate descriptive statistics.
 - **Syntax** - `Series.describe()`
@@ -528,11 +528,11 @@ subs = pd.read_csv('Data/subs.csv').squeeze("columns")
 subs
 ```
 
-**(i) `Integer Indexing`**
+### (i) Integer Indexing
 
-**(ii) `Negative Indexing`**
+### (ii) Negative Indexing
 
-**(iii) `Slicing`**
+### (iii) Slicing
 
 - Selecting a portion of values from a Series using index position or label.
 
@@ -562,7 +562,7 @@ Name: runs, dtype: int64
 movies['Hum Tumhare Hain Sanam']                # Output : 'Shah Rukh Khan'
 ```
 
-**(iv) `Negative Slicing`**
+### (iv) Negative Slicing
 
 - It allowing you to select elements from the end of a Series.
 
@@ -580,7 +580,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(v) `Fancy Indexing`**
+### (v) Fancy Indexing
 
 - Selecting multiple specific elements from a Series using a list of indices or labels.
 
