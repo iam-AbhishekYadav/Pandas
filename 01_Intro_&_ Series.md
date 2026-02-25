@@ -923,6 +923,7 @@ subs
 - It is is used to change the data type of a Pandas Series.
 - It helps reduce memory usage
 - It Ensures correct calculations.
+- **Syntax** : `Series.astype(dtype)`
 
 ``` py
 import sys
@@ -1177,6 +1178,7 @@ dtype: float64
 - It returns a Boolean Series:
   - True → value is present
   - False → value is not present
+- **Syntax** : `Seriea.isin(values)`
 
 ``` py
 vk.isin([49, 99])               # Output : Gives boolean result
