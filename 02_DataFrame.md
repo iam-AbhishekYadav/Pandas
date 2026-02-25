@@ -244,6 +244,9 @@ movies.describe()
 
 - Detect missing values.
 - Return a boolean same-sized object indicating if the values are NA.
+- It returns a Boolean Series:
+  - **True** → value is missing
+  - **False** → value is not missing
 - **Syntax** : `DataFrame.isnull`
 
 ``` py
@@ -272,13 +275,13 @@ release_date         107
 dtype: int64
 ```
 
-**(xii) `duplicated()`**
+**(xi) `duplicated()`**
 
 - It is used to detect duplicate values(rows) in a DataFrame.
 - It returns a Boolean DataFrame:
   - **True** → duplicate
   - **False** → not duplicate
-
+- **Syntax** : `DataFrame.duplicated()`
 
 ``` py
 movies.duplicated()
@@ -300,11 +303,32 @@ Length: 1629, dtype: bool
 movies.duplicated().sum()                # Output : 0
 ```
 
+**(xii) `rename`**
 
+- Rename columns or index labels.
+- **Syntax** : `DataFrame.rename(columns={'old_name': 'new_name'}, inplace=True)`
+  - inplace --> Change   original DataFrame and create a new cpoy
 
+``` py
+student_dict = {'IQ': [100, 90, 120, 80],
+                'Marks': [80, 70, 100, 50],
+                'Packages': [10, 7, 14, 2]}
 
+Students = pd.DataFrame(student_dict)
+Students
 
+Students.rename(columns={'Marks': 'Percentage', 'Packages': 'LPA'})                           # Does not change in original value
+Students.rename(columns={'Marks': 'Percentage', 'Packages': 'LPA'}, inplace = True)           # Change in original value
+```
 
+> Output
+
+|   | IQ  | Marks | Packages |
+|---|-----|-------|----------|
+| 0 | 100 | 80    | 10       |
+| 1 | 90  | 70    | 7        |
+| 2 | 120 | 100   | 14       |
+| 3 | 80  | 50    | 2        |
 
 
 
