@@ -240,12 +240,65 @@ movies.describe()
 | max    | 0.0      | 2019.000000    | 9.400000   | 310481.000000|
 
 
+**(x) `isnull`**
+
+- Detect missing values.
+- Return a boolean same-sized object indicating if the values are NA.
+- **Syntax** : `DataFrame.isnull`
+
+``` py
+movies.isnull()                         # Output : Gives True/False values
+movies.isnull().sum()
+
+# Output
+title_x                0
+imdb_id                0
+poster_path          103
+wiki_link              0
+title_y                0
+original_title         0
+is_adult               0
+year_of_release        0
+runtime                0
+genres                 0
+imdb_rating            0
+imdb_votes             0
+story                 20
+summary                0
+tagline             1072
+actors                 5
+wins_nominations     922
+release_date         107
+dtype: int64
+```
+
+**(xii) `duplicated()`**
+
+- It is used to detect duplicate values(rows) in a DataFrame.
+- It returns a Boolean DataFrame:
+  - **True** → duplicate
+  - **False** → not duplicate
 
 
+``` py
+movies.duplicated()
 
+# Output
+0       False
+1       False
+2       False
+3       False
+4       False
+        ...  
+1624    False
+1625    False
+1626    False
+1627    False
+1628    False
+Length: 1629, dtype: bool
 
-
-
+movies.duplicated().sum()                # Output : 0
+```
 
 
 
