@@ -179,33 +179,45 @@ marks_series = pd.Series(marks,name='nitish ke marks')
 marks_series
 ```
 
-**(i) `Size`** - Return the number of elements in the underlying data.
+### (i) Size 
+- Return the number of elements in the underlying data.
+
 ``` py
 marks_series.size              # Output : 4
 ```
   
 
-**(ii) `dtype`** - Return the dtype object of the underlying data.
+### (ii) dtype
+- Return the dtype object of the underlying data.
+
 ``` py
 marks_series.dtype             # Output : dtype('int64')
 ```
 
-**(iii) `name`** - Return the name of the Series.
+### (iii) name
+- Return the name of the Series.
+
 ``` py
 marks_series.name              # Output : nitish ke marks
 ```
 
-**(iv) `is_unique`** - Return True if values in the object are unique.
+### (iv) is_unique
+- Return True if values in the object are unique.
+
 ``` py
 marks_series.is_unique        # Output : True
 ```
 
-**(v) `index`** - Generate Index values in a range
+### (v) index
+- Generate Index values in a range
+
 ``` py
 marks_series.index            # Output : Index(['maths', 'english', 'science', 'hindi'], dtype='object')
 ```
 
-**(vi) `values`** - Return Series as ndarray or ndarray-like depending on the dtype.
+### (vi) values
+- Return Series as ndarray or ndarray-like depending on the dtype.
+
 ``` py
 marks_series.values           # Output : array([ 67,  57,  89, 100])
 ```
@@ -617,7 +629,7 @@ movies = pd.read_csv('bollywood.csv',index_col='movie').squeeze("columns")
 movies
 ```
 
-**(i) `Using Indexing`**
+### (i) Using Indexing
 
 ``` py
 marks_series.iloc[1] = 100 
@@ -632,7 +644,7 @@ hindi      100
 Name: Sachin ke marks, dtype: int64
 ```
 
-**(ii) `What if an index does not exist`**
+### (ii) What if an index does not exist
 
 ``` py
 marks_series['sst'] = 75
@@ -648,7 +660,7 @@ sst         75
 Name: Sachin ke marks, dtype: int64
 ```
 
-**(iii) `Slicing`**
+### (iii) Slicing
 
 ``` py
 runs_ser[2:4] = [100,100]
@@ -664,7 +676,7 @@ runs_ser
 dtype: int64
 ```
 
-**(iv) `Fancy Indexing`**
+### (iv) Fancy Indexing
 
 ``` py
 runs_ser[[0,3,4]] = [0,0,0]
@@ -680,7 +692,7 @@ runs_ser
 dtype: int64
 ```
 
-**(vi) `Using Index Label`**
+### (vi) Using Index Label
 
 ``` py
 movies['Aankhen (2002 film)'] = 'Alia Bhatt'
@@ -724,12 +736,18 @@ marks_series = pd.Series(marks,index=subjects, name='Sachin ke marks')
 marks_series
 ```
 
-**(i) `len()`** --> It returns the number of items (length) in an object.  
-**(ii) `type()`** --> It returns the data type of a variable or object.  
-**(iii) `dir()`** --> It returns a list of all attributes and methods of an object.  
-**(iv) `sorted()`** --> It returns a new sorted list from any iterable (like list, tuple, string, dictionary).  
-**(v) `max()`** --> It returns the largest value.  
-**(vi) `min()`** --> It returns the smallest value.  
+### (i) len() 
+- It returns the number of items (length) in an object.
+### (ii) type() 
+- It returns the data type of a variable or object.
+### (iii) dir() 
+- It returns a list of all attributes and methods of an object.
+### (iv) sorted() 
+- It returns a new sorted list from any iterable (like list, tuple, string, dictionary).
+### (v) max() 
+- It returns the largest value.
+### (vi) min() 
+- It returns the smallest value.
 
 ``` py
 print(len(subs))                      # Output : 365
@@ -740,7 +758,7 @@ print(min(subs))                      # Output : 33
 print(max(subs))                      # Output : 396
 ```
 
-**(vii) `type conversion`** 
+### (vii) type conversion 
 
 - Type conversion means changing one data type into another.
 - There are two types
@@ -759,7 +777,7 @@ dict(marks_series)                       # Output : {'maths': 67,
 ```
 
 
-**(viii) `membership operator`**
+### (viii) membership operator
 
 - Membership Operator is `in` or `not in`
 - It is used to check whether a value exists inside a Series.
@@ -771,7 +789,7 @@ dict(marks_series)                       # Output : {'maths': 67,
 ```
 
 
-**(ix) `looping`**
+### (ix) looping
 
 - It is used when we know how many times to repeat.
 
@@ -784,7 +802,7 @@ for j in movies.index:
 ```
 
 
-**(x) `Arithmetic Operator`**
+### (x) Arithmetic Operator
 
 - It is used to perform mathematical calculations.
 
@@ -800,7 +818,7 @@ hindi      200
 Name: Sachin ke marks, dtype: int64
 ```
 
-**(xi) `Relational Operators`**
+### (xi) Relational Operators
 
 - It is used to compare two values.
 - It return a Boolean result: True or False.
@@ -836,27 +854,27 @@ subs = pd.read_csv('subs.csv').squeeze("columns")
 subs
 ```
 
-**(i) `Find no. of 50's and 100's scored by Kholi`**
+### (i) Find no. of 50's and 100's scored by Kholi
 
 ``` py
 vk[vk >= 50]                   # Output : Gives list of 50's and 100's scored by Kholi
 vk[vk >= 50].size              # Output : 50
 ```
 
-**(ii) `Find the number of ducks`**
+### (ii) Find the number of ducks
 
 ``` py
 vk[vk == 0]                 # Output : Gives list of 0's scored by Kholi
 vk[vk == 0].size            # Output : 9
 ```
 
-**(iii) `Count number of days when I had more than 200 subscibers a day`**
+### (iii) Count number of days when I had more than 200 subscibers a day
 
 ``` py
 subs[subs > 200].size       # Output : 59
 ```
 
-**(iv) `Find actors who have done more than 20 movies`**
+### (iv) Find actors who have done more than 20 movies
 
 ``` py
 num_movies = movies.value_counts()
@@ -879,7 +897,7 @@ Name: count, dtype: int64
 
 ## Plotting Graphs on Series
 
-**(i) `2D Chart`**
+### (i) 2D Chart
 
 ``` py
 subs.plot()            # Output : Give a Graph
@@ -887,7 +905,7 @@ subs.plot()            # Output : Give a Graph
 
 <img src="https://github.com/user-attachments/assets/3e768ea5-3d49-429e-88b9-7f5604f7a82e" width="550" height="400" />
 
-**(ii) `Bar Chat`**
+### (ii) Bar Chat
 
 ``` py
 movies.value_counts().head(20).plot(kind='bar')         # Output : Gives a Bar chat of top 20 actors with most movies done
@@ -895,7 +913,7 @@ movies.value_counts().head(20).plot(kind='bar')         # Output : Gives a Bar c
 
 <img src="https://github.com/user-attachments/assets/4e6f0b3d-9c73-499f-a9a9-faca6e554709" width="550" height="400" />
 
-**(iii) `Pie Chat`**
+### (iii) Pie Chat
 
 ``` py
 movies.value_counts().head(20).plot(kind='pie')         # Output : Gives a Pie chat of top 20 actors with most movies done
@@ -918,7 +936,7 @@ subs = pd.read_csv('subs.csv').squeeze("columns")
 subs
 ```
 
-**(i) `astype()`**
+### (i) astype()
 
 - It is is used to change the data type of a Pandas Series.
 - It helps reduce memory usage
@@ -934,7 +952,7 @@ vk.astype('int16')                             # Output : Change dtype to int16
 sys.getsizeof(vk.astype('int16'))              # Output : 594
 ```
 
-**(ii) `between()`**
+### (ii) between()
 
 - It is used to check whether values in a Series fall within a specified range.
 - It returns a Boolean Series (True / False).
@@ -973,7 +991,7 @@ Name: runs, dtype: int64
 vk[vk.between(50,99)].size        # Output : 45
 ```
 
-**(iii) `clip()`**
+### (iii) clip()
 
 - It is used to limit (cap) values within a specified range.
 - If a value is:
@@ -1000,7 +1018,7 @@ subs.clip(100,200)
 Name: Subscribers gained, Length: 365, dtype: int64
 ```
 
-**(iv) `drop_duplicates()`**
+### (iv) drop_duplicates()
 
 - It removes repeated values from a Series and keeps only unique ones (based on your settings).
 - **Syntax** : `Series.drop_duplicates(subset=None, keep='first', inplace=False)`
@@ -1046,7 +1064,7 @@ temp.drop_duplicates(keep='last')
 dtype: int64
 ```
 
-**(v) `duplicated()`**
+### (v) duplicated()
 
 - It is used to detect duplicate values in a Series.
 - It returns a Boolean Series:
@@ -1076,7 +1094,7 @@ dtype: bool
 temp.duplicated().sum()              # Output : 5
 ```
 
-**(vi) `isnull()`**
+### (vi) isnull()
 
 - It is used to detect missing (NaN) values in a Pandas Series.
 - It returns a Boolean Series:
@@ -1106,7 +1124,7 @@ dtype: bool
 temp.isnull().sum()           # Output : 3
 ```
 
-**(vii) `dropna()`**
+### (vii) dropna()
 
  - It is used to remove missing (NaN) values from a Series.
  - **Syntax** : `Series.dropna()`
@@ -1128,7 +1146,7 @@ temp.dropna()
 dtype: float64
 ```
 
-**(viii) `fillna()`**
+### (viii) fillna()
 
 -  It is used to replace missing (NaN) values in a Pandas Series.
 -  It can be filled by Mean, Meadian, etc.
@@ -1172,7 +1190,7 @@ temp.ffill()
 dtype: float64
 ```
 
-**(ix) `isin()`**
+### (ix) isin()
 
 - It is used to check whether each value in a Series exists in a given list (or another Series).
 - It returns a Boolean Series:
@@ -1192,7 +1210,7 @@ match_no
 Name: runs, dtype: int64
 ```
 
-**(x) `apply()`**
+### (x) apply()
 
 - It is used to apply a function to each value of a Pandas Series.
 - It works like a loop, but in a cleaner way.
@@ -1238,7 +1256,7 @@ subs.apply(lambda x:'Good Day' if x>subs.mean() else 'Bad Day')
 Name: Subscribers gained, Length: 365, dtype: str
 ```
 
-**(xi) `copy()`**
+### (xi) copy()
 
 - It is used to create a separate (independent) copy of a Series.
 - This prevents changes in one variable from affecting the original data.
