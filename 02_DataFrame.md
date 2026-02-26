@@ -484,7 +484,7 @@ Students.loc['Nitish':'Rishabh']
 | Rishabh | 80  | 50    | 2        |
 
 
-### (ii) By using Fancy Indexing
+### (iii) By using Fancy Indexing
 
 - It is for random rows
 
