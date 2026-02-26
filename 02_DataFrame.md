@@ -504,6 +504,24 @@ Students.loc[['Rishabh', 'Sagar', 'Nitish']]
 | Nitish  | 100 | 80    | 10       |
 
 
+## # Selecting both Row and Columns
+
+``` py
+movies = pd.read_csv('movies.csv')
+movies
+
+movies.iloc[0:3,0:3]
+movies.loc[0:2,'title_x':'poster_path']
+```
+
+> Output fr both loc and iloc
+
+| index | title_x                              | imdb_id    | poster_path                                      |
+|-------|--------------------------------------|------------|--------------------------------------------------|
+| 0     | Uri: The Surgical Strike             | tt8291224  | https://upload.wikimedia.org/wikipedia/en/thum... |
+| 1     | Battalion 609                        | tt9472208  | NaN                                              |
+| 2     | The Accidental Prime Minister (film) | tt6986710  | https://upload.wikimedia.org/wikipedia/en/thum... |
+
 
 
 
