@@ -24,7 +24,7 @@ import pandas as pd
 
 ---
 
-## Accessing elements of Series
+## # Accessing elements of Series
 
 ### (i) Position-based Indexing
 
@@ -69,7 +69,7 @@ print(ser[16])                                     # Output : o
 
 ---
 
-## Series from lists
+## # Series from lists
 
 ### (i) String Series
 
@@ -141,7 +141,7 @@ Name: Nitish ke marks, dtype: int64
 
 ---
 
-## Series from Dictionary
+## # Series from Dictionary
 
 ``` py
 marks = {
@@ -165,7 +165,7 @@ Name: nitish ke marks, dtype: int64
 
 ---
 
-## Series Attributes
+## # Series Attributes
 
 ``` py
 marks = {
@@ -224,7 +224,7 @@ marks_series.values           # Output : array([ 67,  57,  89, 100])
 
 ---
 
-## Series using read_CSV
+## # Series using read_CSV
 
 - Upload file CSV in Project folder.
 - **`Squeeze`** -
@@ -267,7 +267,7 @@ Name: runs, Length: 215, dtype: int64
 
 ---
 
-## Series Methods
+## # Series Methods
 
 ``` py
 vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
@@ -402,7 +402,7 @@ Name: lead, Length: 1500, dtype: object
 ```
 ---
 
-## Series Maths Method
+## # Series Maths Method
 
 ``` py
 vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
@@ -527,7 +527,7 @@ Name: runs, dtype: float64
 ---
 
 
-## Series Indexing
+## # Series Indexing
 
 ``` py
 vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
@@ -613,7 +613,7 @@ Name: runs, dtype: int64
 ---
 
 
-## Series Indexing
+## # Series Indexing
 
 ``` py
 marks = [67,57,89,100] 
@@ -717,7 +717,7 @@ Name: lead, Length: 1500, dtype: str
 
 ---
 
-## Series Python Functionalities
+## # Series Python Functionalities
 
 
 ``` py
@@ -841,7 +841,7 @@ Name: runs, Length: 215, dtype: bool
 
 ---
 
-## Boolean Indexing on Series
+## # Boolean Indexing on Series
 
 ``` py
 vk = pd.read_csv('kohli_ipl.csv', index_col='match_no').squeeze("columns")
@@ -895,7 +895,7 @@ Name: count, dtype: int64
 
 ---
 
-## Plotting Graphs on Series
+## # Plotting Graphs on Series
 
 ### (i) 2D Chart
 
