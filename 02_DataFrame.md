@@ -14,7 +14,7 @@
 
 ---
 
-## Creating of DataFrame
+## # Creating of DataFrame
 
 ### (i) Using Lists
 
@@ -60,7 +60,7 @@ movies
 
 ---
 
-## DataFrame Attributes and Methods
+## # DataFrame Attributes and Methods
 
 ``` py
 movies = pd.read_csv('movies.csv')
@@ -335,7 +335,7 @@ Students.rename(columns={'Marks': 'Percentage', 'Packages': 'LPA'}, inplace = Tr
 
 ---
 
-## DataFrame Maths Method
+## # DataFrame Maths Method
 
 > Same as Series maths methods 
 
