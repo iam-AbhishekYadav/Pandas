@@ -584,7 +584,7 @@ ipl[(ipl['City'] == 'Kolkata') & (ipl['WinningTeam'] == 'Chennai Super Kings')].
 ### (iv) Toss winner is match winner in percentage
 
 ``` py
-(ipl[ipl['TossWinner'] == ipl['WinningTeam']].shape[0]/ipl.shape[0])*100            # Output : 51.473684210526315
+(ipl[ipl['TossWinner'] == ipl['WinningTeam']].shape[0]/ipl.shape[0])*100         # Output : 51.473684210526315
 ```
 
 ### (v) Movies with rating higher than 8 and votes > 10000
