@@ -524,6 +524,88 @@ movies.loc[0:2,'title_x':'poster_path']
 
 
 
+---
+
+## # Filtering DataFrame 
+
+``` py
+movies = pd.read_csv('Lec3/movies.csv')
+movies
+
+ipl = pd.read_csv('Lec3/ipl-matches.csv')
+ipl
+```
+
+### (i) Find all the IPL final winners
+
+``` py
+# 1st Method
+mask = ipl['MatchNumber'] == 'Final'
+new_df = ipl[mask]
+new_df[['Season','WinningTeam']]
+
+# 2nd Method
+ipl[ipl['MatchNumber'] == 'Final'][['Season','WinningTeam']]
+```
+
+> Output
+
+| index | Season  | WinningTeam              |
+|-------|---------|--------------------------|
+| 0     | 2022    | Gujarat Titans           |
+| 74    | 2021    | Chennai Super Kings      |
+| 134   | 2020/21 | Mumbai Indians           |
+| 194   | 2019    | Mumbai Indians           |
+| 254   | 2018    | Chennai Super Kings      |
+| 314   | 2017    | Mumbai Indians           |
+| 373   | 2016    | Sunrisers Hyderabad      |
+| 433   | 2015    | Mumbai Indians           |
+| 492   | 2014    | Kolkata Knight Riders    |
+| 552   | 2013    | Mumbai Indians           |
+| 628   | 2012    | Kolkata Knight Riders    |
+| 702   | 2011    | Chennai Super Kings      |
+| 775   | 2009/10 | Chennai Super Kings      |
+| 835   | 2009    | Deccan Chargers          |
+| 892   | 2007/08 | Rajasthan Royals         |
+
+
+### (ii) How many super over finishes have occured
+
+``` py
+ipl[ipl['SuperOver'] == 'Y'].shape[0]             # Output : 14
+```
+
+### (iii) How many matches has csk won in kolkata
+
+``` py
+ipl[(ipl['City'] == 'Kolkata') & (ipl['WinningTeam'] == 'Chennai Super Kings')].shape[0]           # Output : 5
+```
+
+### (iv) Toss winner is match winner in percentage
+
+``` py
+(ipl[ipl['TossWinner'] == ipl['WinningTeam']].shape[0]/ipl.shape[0])*100              # Output : 51.473684210526315
+```
+
+### (v) Movies with rating higher than 8 and votes > 10000
+
+``` PY
+movies[(movies['imdb_rating'] > 8.5) & (movies['imdb_votes'] > 10000)].shape[0]                  # Output : 0
+```
+
+### (vi) Action movies with rating higher than 7.5
+
+``` py
+# 1st Method
+mask1 = movies['genres'].str.split('|').apply(lambda x:'Action' in x)         # Output : Gives movie with rating higher than 7.5
+mask2 = movies['imdb_rating'] > 7.5
+
+# 2nd Method
+mask1 = movies['genres'].str.contains('Action')
+mask2 = movies['imdb_rating'] > 7.5
+
+movies[mask1 & mask2]                  # oUTPUT : Gives movie with rating higher than 7.5
+```
 
 
 
