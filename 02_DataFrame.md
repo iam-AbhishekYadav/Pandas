@@ -607,7 +607,7 @@ mask2 = movies['imdb_rating'] > 7.5
 movies[mask1 & mask2]                  # oUTPUT : Gives movie with rating higher than 7.5
 ```
 
-
+### (vii) Write a function that can return the track record of 2 teams against each other
 
 
 
