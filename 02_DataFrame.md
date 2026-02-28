@@ -609,86 +609,55 @@ movies[mask1 & mask2]                  # oUTPUT : Gives movie with rating higher
 
 ### (vii) Write a function that can return the track record of 2 teams against each other
 
+---
 
+## Creating New Columns
 
+### (i) Completely New Column
 
+``` py
+movies = pd.read_csv('Lec3/movies.csv')
+movies
 
+ipl = pd.read_csv('Lec3/ipl-matches.csv')
+ipl
+```
 
+``` py
+movies['Country'] = 'India'
+movies                              # Ouytput : Add a new 'Country' column with value for every movie 'India' 
+```
 
 
+### (ii) Create a Column from Existing Columns
 
+``` py
+movies.dropna(inplace=True)                         # Remove rows with any missing values
 
+movies['lead actor'] = movies['actors'].str.split('|').apply(lambda x:x[0])              # Add a new 'Lead Actor' column (First actor is actors column is lead actor)
+movies
+```
 
+---
 
+## Important DataFrame Functions
 
+### (i) astype()
 
+- It is is used to change the data type of a Pandas DataFrame.
+- It helps reduce memory usage
+- It Ensures correct calculations.
+- **Syntax** : `DataFrame.astype(dtype)`
 
+``` py
+# Before change in data type
+ipl.info()                               # memory usage: 148.6 KB
 
+ipl['ID']= ipl['ID'].astype('int32')     # Change the data type permanently
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# After change in data type
+ipl.info()                               # memory usage: 144.9 KB
+```
 
 
 
