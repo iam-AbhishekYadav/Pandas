@@ -650,6 +650,14 @@ movies
 
 ## Important DataFrame Functions
 
+``` py
+movies = pd.read_csv('Lec3/movies.csv')
+movies
+
+ipl = pd.read_csv('Lec3/ipl-matches.csv')
+ipl
+```
+
 ### (i) astype()
 
 - It is is used to change the data type of a Pandas DataFrame.
