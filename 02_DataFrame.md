@@ -675,7 +675,109 @@ ipl['ID']= ipl['ID'].astype('int32')     # Change the data type permanently
 ipl.info()                               # memory usage: 144.9 KB
 ```
 
+### (ii) value_count()
 
+- Return a Series containing the frequency of each distinct row in the DataFrame.
+- It can be applied in both Series and DataFrame.
+- **Syntax** - `DataFrame.value_count()`
+
+``` py
+marks = pd.DataFrame([
+    [100,80,10],
+    [90,70,7],
+    [120,100,14],
+    [80,70,14],
+    [80,70,14]
+],columns=['iq','marks','package'])
+
+marks
+
+marks.value_counts()
+
+# Output
+iq   marks  package
+80   70     14         2
+100  80     10         1
+90   70     7          1
+120  100    14         1
+Name: count, dtype: int64
+```
+
+### Questions related to value_count()
+
+##### 1. Find which player has won most potm -> in finals and qualifiers
+
+> Approach to solve this problem
+>
+> - In Match Number column matches are number, qualifier, eliminator and final
+> - We need to extract qualifier, eliminator and final only
+> - Then we use value_count()
+
+> [!NOTE]
+> ~ is NOT Operator (logical negation)
+
+``` py
+potm = ipl[~ipl['MatchNumber'].str.isdigit()]['Player_of_Match'].value_counts()
+potm.head()
+
+# Output
+Player_of_Match
+F du Plessis    3
+KA Pollard      3
+SK Raina        3
+JJ Bumrah       2
+SR Watson       2
+Name: count, dtype: int64
+```
+
+##### 2. Plot Toss decision
+
+> Approach to solve this problem
+>
+> - First we extract TossDecision column from DataFrame
+> - Then use value_count() and plot()
+
+> [!NOTE]
+> Autopct is used in pie chart to display percentage values on the chart.
+
+``` py
+ipl['TossDecision'].value_counts().plot(kind='pie', autopct='%1.1f%%')
+```
+
+<img src="https://github.com/user-attachments/assets/f8fe7f06-eee3-4fdb-89c1-b8eac7d11a46" width="500" height="500">
+
+
+##### 3. How many matches each team has played
+
+> Approach to solve this problem
+>
+> - It is possible that one team may be in Team-1 nad the same team maybe in Team-2 in another match
+> - We apply value_count() on both Team-1 and Team-2
+
+``` py
+(ipl['Team2'].value_counts() + ipl['Team1'].value_counts()).sort_values(ascending=False)
+
+# Output
+Mumbai Indians                 231
+Royal Challengers Bangalore    226
+Kolkata Knight Riders          223
+Chennai Super Kings            208
+Rajasthan Royals               192
+Kings XI Punjab                190
+Delhi Daredevils               161
+Sunrisers Hyderabad            152
+Deccan Chargers                 75
+Delhi Capitals                  63
+Pune Warriors                   46
+Gujarat Lions                   30
+Punjab Kings                    28
+Gujarat Titans                  16
+Rising Pune Supergiant          16
+Lucknow Super Giants            15
+Kochi Tuskers Kerala            14
+Rising Pune Supergiants         14
+Name: count, dtype: int64
+```
 
 
 
