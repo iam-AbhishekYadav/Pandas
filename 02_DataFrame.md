@@ -780,6 +780,93 @@ Name: count, dtype: int64
 ```
 
 
+### (iii) sort_value()
+
+- Sort a DataFrame in ascending or descending orderby one or more columns.
+- **Syntax** - `DataFrame.sort_values()`
+- **Parametrs**: 0 or index, inplace, ascending (bool or list of bools, default True)
+  - inplace - Update the original DataFrame permanently
+
+``` py
+movies.sort_values('title_x',ascending=False)          # Output : It sort movie dataframe by Z to A on basis of column title_x
+```
+
+#### Some Important Cases
+
+``` py
+students = pd.DataFrame(
+    {
+        'name':['nitish','ankit','rupesh',np.nan,'mrityunjay',np.nan,'rishabh',np.nan,'aditya',np.nan],
+        'college':['bit','iit','vit',np.nan,np.nan,'vlsi','ssit',np.nan,np.nan,'git'],
+        'branch':['eee','it','cse',np.nan,'me','ce','civ','cse','bio',np.nan],
+        'cgpa':[6.66,8.25,6.41,np.nan,5.6,9.0,7.4,10,7.4,np.nan],
+        'package':[4,5,6,np.nan,6,7,8,9,np.nan,np.nan]
+
+    }
+)
+students
+```
+| index | name        | college | branch | cgpa  | package |
+|-------|------------|---------|--------|-------|---------|
+| 0     | nitish     | bit     | eee    | 6.66  | 4.0     |
+| 1     | ankit      | iit     | it     | 8.25  | 5.0     |
+| 2     | rupesh     | vit     | cse    | 6.41  | 6.0     |
+| 3     | NaN        | NaN     | NaN    | NaN   | NaN     |
+| 4     | mrityunjay | NaN     | me     | 5.60  | 6.0     |
+| 5     | NaN        | vlsi    | ce     | 9.00  | 7.0     |
+| 6     | rishabh    | ssit    | civ    | 7.40  | 8.0     |
+| 7     | NaN        | NaN     | cse    | 10.00 | 9.0     |
+| 8     | aditya     | NaN     | bio    | 7.40  | NaN     |
+| 9     | NaN        | git     | NaN    | NaN   | NaN     |
+
+> **Case - 1 : Position of NaN values** 
+> - It automatically moves the NaN value to the last position. (Default Behaviour)
+> - But we can change it by parameter na_position
+
+``` py
+students.sort_values('name',na_position='first',ascending=False)
+students                                       # Output : First values are NaN nad other are sorted by A to Z
+```
+
+| index | name        | college | branch | cgpa  | package |
+|-------|------------|---------|--------|-------|---------|
+| 3     | NaN        | NaN     | NaN    | NaN   | NaN     |
+| 5     | NaN        | vlsi    | ce     | 9.00  | 7.0     |
+| 7     | NaN        | NaN     | cse    | 10.00 | 9.0     |
+| 9     | NaN        | git     | NaN    | NaN   | NaN     |
+| 2     | rupesh     | vit     | cse    | 6.41  | 6.0     |
+| 6     | rishabh    | ssit    | civ    | 7.40  | 8.0     |
+| 0     | nitish     | bit     | eee    | 6.66  | 4.0     |
+| 4     | mrityunjay | NaN     | me     | 5.60  | 6.0     |
+| 1     | ankit      | iit     | it     | 8.25  | 5.0     |
+| 8     | aditya     | NaN     | bio    | 7.40  | NaN     |
+
+
+> **Case - 2 : Sort by Multiple Columns**
+> - The order of the columns in the list determines the sorting priority 
+> - It sorts by the first column, then the second within groups of tied values in the first, and so on
+
+``` py
+students.sort_values(by=['cgpa', 'package'], ascending=[False, False])
+
+# Output
+# First sort by cgpa (descending)
+# If cgpa is same → then sort by package (descending)
+```
+
+| index | name        | college | branch | cgpa  | package |
+|-------|------------|---------|--------|-------|---------|
+| 7     | NaN        | NaN     | cse    | 10.00 | 9.0     |
+| 5     | NaN        | vlsi    | ce     | 9.00  | 7.0     |
+| 1     | ankit      | iit     | it     | 8.25  | 5.0     |
+| 6     | rishabh    | ssit    | civ    | 7.40  | 8.0     |
+| 8     | aditya     | NaN     | bio    | 7.40  | NaN     |
+| 0     | nitish     | bit     | eee    | 6.66  | 4.0     |
+| 2     | rupesh     | vit     | cse    | 6.41  | 6.0     |
+| 4     | mrityunjay | NaN     | me     | 5.60  | 6.0     |
+| 3     | NaN        | NaN     | NaN    | NaN   | NaN     |
+| 9     | NaN        | git     | NaN    | NaN   | NaN     |
+
 
 
 
