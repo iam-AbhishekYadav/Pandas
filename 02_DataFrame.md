@@ -613,6 +613,14 @@ movies[mask1 & mask2]                  # oUTPUT : Gives movie with rating higher
 
 ## Creating New Columns
 
+``` py
+movies = pd.read_csv('Lec3/movies.csv')
+movies
+
+ipl = pd.read_csv('Lec3/ipl-matches.csv')
+ipl
+```
+
 ### (i) Completely New Column
 
 ``` py
