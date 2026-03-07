@@ -651,10 +651,10 @@ movies
 ## Important DataFrame Functions
 
 ``` py
-movies = pd.read_csv('Lec3/movies.csv')
+movies = pd.read_csv('movies.csv')
 movies
 
-ipl = pd.read_csv('Lec3/ipl-matches.csv')
+ipl = pd.read_csv('pl-matches.csv')
 ipl
 ```
 
