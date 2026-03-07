@@ -656,6 +656,9 @@ movies
 
 ipl = pd.read_csv('pl-matches.csv')
 ipl
+
+batsman_run = pd.read_csv('batsman_runs_ipl.csv')
+batsman_run
 ```
 
 ### (i) astype()
