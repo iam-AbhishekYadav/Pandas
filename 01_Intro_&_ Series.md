@@ -377,7 +377,7 @@ Name: runs, Length: 215, dtype: int64
 ### (vi) sort_index()
 
 - Returns a new Series sorted by label if inplace argument is False.
-- **Symtax** - `series.sort_index`
+- **Symtax** - `series.sort_index()`
 - **Parametrs**: 0 or index, inplace, ascending (bool or list-like of bools, default True)
 
 ``` py
