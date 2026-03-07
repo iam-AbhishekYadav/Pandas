@@ -1100,7 +1100,7 @@ temp.duplicated().sum()              # Output : 5
 - It returns a Boolean Series:
   - **True** → value is missing
   - **False** → value is not missing
-  - - **Syntax** : `Series.isnull`
+  - - **Syntax** : `Series.isnull()`
 
 ``` py
 temp = pd.Series([1,2,3,np.nan,5,6,np.nan,8,np.nan,10])
