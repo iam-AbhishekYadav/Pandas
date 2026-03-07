@@ -242,7 +242,7 @@ movies.describe()
 | max    | 0.0      | 2019.000000    | 9.400000   | 310481.000000|
 
 
-### (x) isnull
+### (x) isnull()
 
 - Detect missing values.
 - Return a boolean same-sized object indicating if the values are NA.
@@ -305,11 +305,13 @@ Length: 1629, dtype: bool
 movies.duplicated().sum()                # Output : 0
 ```
 
-### (xii) rename
+### (xii) rename()
 
 - Rename columns or index labels.
 - **Syntax** : `DataFrame.rename(columns={'old_name': 'new_name'}, inplace=True)`
   - inplace --> Change   original DataFrame and create a new cpoy
+
+> Change in Column
 
 ``` py
 student_dict = {'IQ': [100, 90, 120, 80],
@@ -332,6 +334,15 @@ Students.rename(columns={'Marks': 'Percentage', 'Packages': 'LPA'}, inplace = Tr
 | 2 | 120 | 100   | 14       |
 | 3 | 80  | 50    | 2        |
 
+
+> Change in Index
+
+``` py
+movies.set_index('title_x',inplace=True)                   # Set 'title_x' as index
+
+movies.rename(index={'Uri: The Surgical Strike':'Uri',
+                    'Battalion 609':'Battalion'})            # Rename index name
+```
 
 ---
 
