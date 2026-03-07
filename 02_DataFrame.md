@@ -894,6 +894,214 @@ students.sort_values(by=['cgpa', 'package'], ascending=[False, False])
 
 
 
+### (iv) sort_index()
+
+- Returns a new DataFrame sorted by label if inplace argument is False.
+- It behaves same in both Series and DataFrame.
+- **Syntax** - `DataFrame.sort_index()`
+- **Parametrs** : 0 or index, inplace, ascending (bool or list-like of bools, default True)
+
+``` py
+movies.sort_index(ascending=False)           # Output : It sorted movies DataFrame in decending order
+```
+
+### (v) set_index()
+
+- This method is used to set one or more columns of a DataFrame as the index.
+- **Syntax** - `DataFrame.set_index()`
+
+``` py
+batsman.set_index('batter')               # Output : 'batter' cloumn is now index                                 
+```
+
+> Output 
+
+| batter | batsman_run |
+|-------|-------------|
+| A Ashish Reddy | 280 |
+| A Badoni | 161 |
+| A Chandila | 4 |
+| ... | ... |
+| Yuvraj Singh | 2754 |
+| Z Khan | 117 |
+
+
+### (vi) reset_index()
+
+- This method in Pandas is used to manage and reset the index of a DataFrame.
+- It is useful after performing operations that modify the index such as filtering, grouping or setting a custom index.
+- **Syntax** -   `DataFrame.reset_index()`
+
+``` py
+batsman.set_index('batter', inplace=True)
+batsman                                           # Output : 'batter' cloumn is now index ---> Permanent Change
+
+batsman.reset_index()                              # Output : reset the index
+```
+
+> Otput 
+
+| index | batter | batsman_run |
+|------|--------|-------------|
+| 0 | A Ashish Reddy | 280 |
+| 1 | A Badoni | 161 |
+| 2 | A Chandila | 4 |
+| ... | ... | ... |
+| 603 | Yuvraj Singh | 2754 |
+| 604 | Z Khan | 117 |
+
+
+#### Series to DataFrame using reset_index()
+
+``` py
+marks = {
+    'maths':67,
+    'english':57,
+    'science':89,
+    'hindi':100
+}
+
+marks_series = pd.Series(marks)
+marks_series
+
+
+marks_series.reset_index()
+```
+
+> Output
+
+| index_no | index | 0 |
+|---------|-------|---|
+| 0 | maths | 67 |
+| 1 | english | 57 |
+| 2 | science | 89 |
+| 3 | hindi | 100 |
+
+
+### (vii) unique() ---> Series
+
+- Return an array of all the unique values within a Series, in the order of their appearance.
+- **Syntax** - `Series.unique()`
+
+``` py
+temp = pd.Series([1,1,2,2,3,3,4,4,5,5,np.nan,np.nan])
+print(temp)
+
+temp.unique()                           # Output : array([ 1.,  2.,  3.,  4.,  5., nan])
+len(temp.unique())                      # Output : 6
+```
+
+### (viii) nunique()
+
+- Return the number of unique values for each column.
+- It ignore NaN values.
+- **Syntax** - `DataFrame.nunique()`
+
+``` py
+temp = pd.Series([1,1,2,2,3,3,4,4,5,5,np.nan,np.nan])
+print(temp)
+
+temp.nunique()                      # Output : 5
+```
+
+
+### (ix) isnull()
+
+- It is used to detect missing (NaN) values in a Pandas Series.
+- It returns a Boolean Series:
+  - True → value is missing
+  - False → value is not missing
+- **Syntax** - `Series.isnull()`
+
+``` py
+students['name'][students['name'].isnull()]                    # Give NaN values in `name` column
+
+# Output
+3    NaN
+5    NaN
+7    NaN
+9    NaN
+Name: name, dtype: str
+
+
+students.isnull()
+```
+
+> Ouput 
+
+| index | name | college | branch | cgpa | package |
+|------|------|---------|--------|------|---------|
+| 0 | False | False | False | False | False |
+| 1 | False | False | False | False | False |
+| 2 | False | False | False | False | False |
+| ... | ... | ... | ... | ... | ... |
+| 8 | False | True | False | False | True |
+| 9 | True | False | True | True | True |
+
+
+### (x) notnull()
+
+- It is oppsite of `isnull()`
+-  It is used to detect existing (non-missing) values.
+- It returns a Boolean Series:
+  - True → value is not missing
+  - False → value is missing
+- **Syntax** - `Series.notnull()`
+
+``` py
+students['name'][students['name'].notnull()]              # Give non missing values in `name` column
+
+# Output
+0        nitish
+1         ankit
+2        rupesh
+4    mrityunjay
+6       rishabh
+8        aditya
+Name: name, dtype: str
+
+
+students.notnull()
+```
+
+> Output
+
+| index | name | college | branch | cgpa | package |
+|------|------|---------|--------|------|---------|
+| 0 | True | True | True | True | True |
+| 1 | True | True | True | True | True |
+| 2 | True | True | True | True | True |
+| ... | ... | ... | ... | ... | ... |
+| 8 | True | False | True | True | False |
+| 9 | False | True | False | False | False |
+
+
+
+### (xi) dropna()
+
+- It is used to remove missing (NaN) values from a DataFrame.
+- **Syntax** - `DataFrame.dropna()`
+- **Parameters** :
+  - **`axis`**
+    - 0 to drop rows (default)
+    - 1 to drop columns
+    - Only a single axis is allowed.
+  - **`how`** 
+    - `‘any’` : Drop if any value is missing (default)
+    - `‘all’` : Drop if all are missing
+  - **`subset`** - Labels to consider for NA checks (subset of columns)
+  - **`thresh`** - Minimum number of non-NA values required to keep the row/column
+  - **`inplace`**
+    - If True, modifies the original DataFrame
+    - If False (default), returns a new one
+
+``` py
+students['name'].dropna()                               # Drop NaN from 'name' series
+students.dropna(how='any')                              # Drop NaN if any NaN values are present in coulmn/row
+students.dropna(how='all')                              # Drop NaN if all NaN values are presentin coulmn/row
+students.dropna(subset=['name','college'])              # Drop NaN if NaN is present in 'name' and 'college' column
+students.dropna(thresh=3)                               # Drop NaN is NaN is more than 3 in coulmn/row
+```
 
 
 
