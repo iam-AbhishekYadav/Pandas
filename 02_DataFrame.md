@@ -1,6 +1,6 @@
 # # Data Structures / Objects in Pandas
 
-# (2.) Pnadas DataFrame
+# (2.) Pandas DataFrame
 
 - It is a two-dimensional table-like structure in Python where data is arranged in rows and columns.
 - It can store different types of data such as numbers, text and dates across its columns.
