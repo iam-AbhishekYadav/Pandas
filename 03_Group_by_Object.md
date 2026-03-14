@@ -53,12 +53,37 @@ movies.groupby('Genre')['Gross'].sum().sort_values(ascending=False).head(3)
 # Name: Gross, dtype: float64
 ```
 
+## 2. Find the genre with highest avg IMDB rating
 
+> Same Approach as 1st question
 
+``` py
+movies.groupby('Genre')['IMDB_Rating'].mean().sort_values(ascending=False).head(3)
 
+# Output
 
+# Genre
+# Western    8.350000
+# Crime      8.016822
+# Fantasy    8.000000
+# Name: IMDB_Rating, dtype: float64
+```
 
+## 3. Find director with most popularity (No_of_Votes)
 
+> Same Approach as 1st question
+
+``` PY
+movies.groupby('Director')['No_of_Votes'].mean().sort_values(ascending=False).head(3)
+
+# Output
+
+# Director
+# Frank Darabont       1745452.000
+# Lana Wachowski       1676426.000
+# Christopher Nolan    1447293.125
+# Name: No_of_Votes, dtype: float64
+```
 
 
 
