@@ -1103,6 +1103,143 @@ students.dropna(subset=['name','college'])              # Drop NaN if NaN is pre
 students.dropna(thresh=3)                               # Drop NaN is NaN is more than 3 in coulmn/row
 ```
 
+### (xii) fillna()
+
+- It is used to replace missing (NaN) values in a Pandas DataFrame.
+- It can be filled by Mean, Meadian, etc.
+- Forward Fill (ffill) - Copies the previous value down.
+  - `DataFrame.ffill()`
+- Backward Fill (bfill) - Uses the next value.
+  - `DataFrame.bfill()`
+
+``` py
+students['name'].fillna('unknown')                              # Fill NaN with 'unknown` from series 'name'
+students['package'].fillna(students['package'].mean())          # Fill NaN with Mean of student package in package column 
+students['name'].bfill()                                        # Fill NaN with backward values
+```
+
+### (xiii) drop_duplicates() 
+
+- It removes repeated values from a DataFrame and keeps only unique ones (based on your settings).
+- **Syntax** : `DataFrame.drop_duplicates(subset=None, keep='first', inplace=False)`
+  - subset → column(s) to check duplicates
+  - keep → which duplicate to keep ('first', 'last', False)
+  - inplace → modify original data (True or False)
+
+``` py
+marks = pd.DataFrame([
+    [100,80,10],
+    [90,70,7],
+    [120,100,14],
+    [80,70,14],
+    [80,70,14]
+],columns=['iq','marks','package'])
+
+marks
+
+marks.drop_duplicates()
+```
+
+> **Output** : Removes 4th row of the table because it is duplicate of 3rd row
+
+|   | iq  | marks | package |
+|---|-----|-------|---------|
+| 0 | 100 | 80    | 10      |
+| 1 | 90  | 70    | 7       |
+| 2 | 120 | 100   | 14      |
+| 3 | 80  | 70    | 14      |
+
+
+### Questions on drop_duplicates()
+
+#### 1. Find the last match played by virat kohli in Delhi.
+
+> Approach to solve this problem
+>
+> - First we Combine both team players to all players
+> - Create a function that checks whether 'V Kohli' exists in the player list.
+> - Create a new column indicating Kohli's presence
+> - Filter matches played in Delhi
+> - From Delhi matches, keep only those where Kohli participated.
+> - Find the last match
+
+``` py
+# Step : 1
+ipl['all_players'] = ipl['Team1Players'] + ipl['Team2Players']
+ipl.head()
+
+# Step : 2
+def did_kohli_play(players_list):
+    return 'V Kohli' in players_list
+
+# Step : 3
+ipl['did_kohli_play'] = ipl['all_players'].apply(did_kohli_play)
+
+# Step : 4,5,6
+ipl[(ipl['City'] == 'Delhi') & (ipl['did_kohli_play'] == True)].drop_duplicates(subset=['City','did_kohli_play'],keep='first')
+```
+
+> Output
+
+| index | ID      | City  | Date       | Season | MatchNumber | Team1          | Team2                     | Venue               | TossWinner       | TossDecision | WonBy | Margin | method | Player_of_Match | Team1Players | Team2Players | Umpire1       | Umpire2                  | all_players | did_kohli_play |
+|------|---------|-------|------------|--------|-------------|---------------|---------------------------|--------------------|-----------------|-------------|-------|--------|--------|----------------|--------------|--------------|--------------|--------------------------|-------------|---------------|
+| 208  | 1178421 | Delhi | 2019-04-28 | 2019   | 46          | Delhi Capitals | Royal Challengers Bangalore | Arun Jaitley Stadium | Delhi Capitals | bat         | Runs  | 16     | NaN    | S Dhawan       | ['PP Shaw', 'S Dhawan', 'SS Iyer', 'RR Pant', ...] | ['PA Patel', 'V Kohli', 'AB de Villiers', ...] | BNJ Oxenford | KN Ananthapadmanabhan | ['PP Shaw', 'S Dhawan', 'SS Iyer', ...] | True |
+
+### (xiv) drop()
+
+- It is used to remove specified labels from rows or columns in a DataFrame.
+- **Syntax** - `DataFrame.drop()`
+
+``` py
+# Delete Column
+students.drop(columns=['branch','cgpa'])            # Delete column 'branch' and 'cgpa'
+
+# Delete Row
+students.set_index('name',inplace=True)             # Set 'name' as index
+students.drop(index=['nitish','aditya'])            # Delete row with index 'nitish' and 'aditya'
+``` 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
