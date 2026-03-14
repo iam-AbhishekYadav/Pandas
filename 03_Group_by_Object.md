@@ -11,6 +11,8 @@ movies = pd.read_csv('imdb-top-1000.csv')
 movies
 ```
 
+---
+
 ## # Applying builtin aggregation fuctions on GroupBy Objects
 
 - **Aggregation fuctions** : count(), sum(), avg(), min(), max(), etc.
@@ -24,6 +26,7 @@ genres.sum()
 # Calculate the sum of all numeric columns for each genre.
 ```
 
+---
 
 ## # Questions on GroupBy
 
@@ -112,6 +115,8 @@ movies.groupby('Star1')['Series_Title'].count().sort_values(ascending=False)
 # Aaron Taylor-Johnson     1
 # Name: Series_Title, Length: 660, dtype: int64
 ```
+
+---
 
 
 
