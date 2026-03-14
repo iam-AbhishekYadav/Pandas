@@ -27,7 +27,7 @@ genres.sum()
 
 ## Questions on Group By
 
-### 1. Find the top 3 genres by total earning
+#### 1. Find the top 3 genres by total earning
 
 > Approach to solve this problem
 >
@@ -53,7 +53,7 @@ movies.groupby('Genre')['Gross'].sum().sort_values(ascending=False).head(3)
 # Name: Gross, dtype: float64
 ```
 
-## 2. Find the genre with highest avg IMDB rating
+#### 2. Find the genre with highest avg IMDB rating
 
 > Same Approach as 1st question
 
@@ -69,11 +69,11 @@ movies.groupby('Genre')['IMDB_Rating'].mean().sort_values(ascending=False).head(
 # Name: IMDB_Rating, dtype: float64
 ```
 
-## 3. Find director with most popularity (No_of_Votes)
+#### 3. Find director with most popularity (No_of_Votes)
 
 > Same Approach as 1st question
 
-``` PY
+``` py
 movies.groupby('Director')['No_of_Votes'].mean().sort_values(ascending=False).head(3)
 
 # Output
@@ -85,11 +85,33 @@ movies.groupby('Director')['No_of_Votes'].mean().sort_values(ascending=False).he
 # Name: No_of_Votes, dtype: float64
 ```
 
+#### 4. Find number of movies done by each actor
 
+> Same Approach as 1st question
 
+``` py
+# 1st Method
+movies['Star1'].value_counts()
 
+# 2nd Method
+movies.groupby('Star1')['Series_Title'].count().sort_values(ascending=False)
 
+# Output
 
+# Star1
+# Tom Hanks               12
+# Robert De Niro          11
+# Clint Eastwood          10
+# Al Pacino               10
+# Humphrey Bogart          9
+#                         ..
+# Zbigniew Zamachowski     1
+# Zooey Deschanel          1
+# Çetin Tekindor           1
+# Éric Toledano            1
+# Aaron Taylor-Johnson     1
+# Name: Series_Title, Length: 660, dtype: int64
+```
 
 
 
