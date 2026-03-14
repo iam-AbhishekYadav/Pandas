@@ -40,7 +40,8 @@ genres.sum()
 # 1st Method
 movies.groupby('Genre').sum()['Gross'].sort_values(ascending=False).head(3)
 
-# 2nd Method
+# 2nd Method ---> Fast
+# Extract 'Gross' coulmn first then apply sum()
 movies.groupby('Genre')['Gross'].sum().sort_values(ascending=False).head(3)
 
 # Output
