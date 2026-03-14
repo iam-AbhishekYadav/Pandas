@@ -11,7 +11,7 @@ movies = pd.read_csv('imdb-top-1000.csv')
 movies
 ```
 
-## Applying builtin aggregation fuctions on GroupBy Objects
+## # Applying builtin aggregation fuctions on GroupBy Objects
 
 - **Aggregation fuctions** : count(), sum(), avg(), min(), max(), etc.
 
@@ -25,7 +25,7 @@ genres.sum()
 ```
 
 
-## Questions on GroupBy
+## # Questions on GroupBy
 
 #### 1. Find the top 3 genres by total earning
 
