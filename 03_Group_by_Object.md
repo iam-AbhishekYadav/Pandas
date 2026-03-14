@@ -25,10 +25,32 @@ genres.sum()
 ```
 
 
+## Questions on Group By
 
+### 1. Find the top 3 genres by total earning
 
+> Approach to solve this problem
+>
+> - Take data set and group by on the basis of 'Genre'
+> - Apply sum() on this group by
+> - Sum applies on every column includingt 'Gross'
+> - Then we extract top 3 gross earning from 'Gross' column 
 
+``` py
+# 1st Method
+movies.groupby('Genre').sum()['Gross'].sort_values(ascending=False).head(3)
 
+# 2nd Method
+movies.groupby('Genre')['Gross'].sum().sort_values(ascending=False).head(3)
+
+# Output
+
+# Genre
+# Drama     3.540997e+10
+# Action    3.263226e+10
+# Comedy    1.566387e+10
+# Name: Gross, dtype: float64
+```
 
 
 
