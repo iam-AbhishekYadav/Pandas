@@ -121,7 +121,7 @@ movies.groupby('Star1')['Series_Title'].count().sort_values(ascending=False)
 ## # Attributes and Methods of GroupBy
 
 ``` py
-movies = pd.read_csv('Lec-5/imdb-top-1000.csv')
+movies = pd.read_csv('imdb-top-1000.csv')
 movies
 ```
 
