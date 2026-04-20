@@ -233,6 +233,260 @@ genres.nunique()                    # It gives number of unique movies in each g
 
 ---
 
+## # Using Two or More Aggregation Methods
+
+``` py
+movies = pd.read_csv('imdb-top-1000.csv')
+movies
+```
+
+### (i) Passing dict
+
+``` py
+genres.agg(
+    {
+        'Runtime':'mean',
+        'IMDB_Rating':'mean',
+        'No_of_Votes':'sum',
+        'Gross':'sum',
+        'Metascore':'min'
+    }    
+)
+```
+
+> Output
+
+| Genre       | Runtime   | IMDB_Rating | No_of_Votes | Gross        | Metascore |
+|------------|----------:|------------:|------------:|-------------:|----------:|
+| Action     | 129.046512 | 7.949419    | 72282412    | 3.263226e+10 | 33.0      |
+| Adventure  | 134.111111 | 7.937500    | 22576163    | 9.496922e+09 | 41.0      |
+| Animation  | 99.585366  | 7.930488    | 21978630    | 1.463147e+10 | 61.0      |
+| Biography  | 136.022727 | 7.938636    | 24006844    | 8.276358e+09 | 48.0      |
+
+
+### (ii) Passing list
+
+
+
+
+
+
+
+### (iii) Passing both dict and list
+
+``` py
+genres.agg(
+    {
+        'Runtime':['min','mean'],
+        'IMDB_Rating':'mean',
+        'No_of_Votes':['sum','max'],
+        'Gross':'sum',
+        'Metascore':'min'
+    }
+)
+```
+
+> Output
+
+
+| Genre | Runtime |  | IMDB_Rating | No_of_Votes |  | Gross | Metascore |
+|-------|--------|--------|-------------|-------------|-------------|-------|-----------|
+|       | min    | mean   | mean        | sum         | max         | sum   | min       |
+| Action    | 45  | 129.046512 | 7.949419 | 72282412 | 2303232 | 3.263226e+10 | 33.0 |
+| Adventure | 88  | 134.111111 | 7.937500 | 22576163 | 1512360 | 9.496922e+09 | 41.0 |
+| Animation | 71  | 99.585366  | 7.930488 | 21978630 | 999790  | 1.463147e+10 | 61.0 |
+| Biography | 93  | 136.022727 | 7.938636 | 24006844 | 1213505 | 8.276358e+09 | 48.0 |
+
+---
+
+## # Split Apply Combine strategy
+
+- `apply()` - It has builtin function
+
+
+### Questions 
+
+``` py
+movies = pd.read_csv('imdb-top-1000.csv')
+movies
+```
+
+#### 1. Find number of movies starting with A for each group
+
+``` py
+def foo(group):
+  return group['Series_Title'].str.startswith('A').sum()
+
+genres.apply(foo)
+
+
+# Output
+
+# Genre 
+# Action       : 10
+# Adventure    :  2
+# Animation    :  2
+# Biography    :  9
+# Comedy       : 14
+# Crime        :  4
+# Drama        : 21
+# Family       :  0
+# Fantasy      :  0
+# Film-Noir    :  0
+# Horror       :  1
+# Mystery      :  0
+# Thriller     :  0
+# Western      :  0
+# dtype: int64
+```
+
+
+#### 2. Find ranking of each movie in the group according to IMDB score
+
+``` py
+def rank_movie(group):
+  group['genre_rank'] = group['IMDB_Rating'].rank(ascending=False)
+  return group
+
+genres.apply(rank_movie)
+```
+
+> Output
+
+
+| Index | Series_Title                  | Released_Year | Runtime | Genre  | IMDB_Rating | Director                | Star1              | No_of_Votes | Gross        | Metascore | genre_rank |
+|------|------------------------------|--------------|---------|--------|-------------|-------------------------|--------------------|-------------|-------------|-----------|------------|
+| 0    | The Shawshank Redemption     | 1994         | 142     | Drama  | 9.3         | Frank Darabont          | Tim Robbins        | 2343110     | 28341469.0  | 80.0      | 1.0        |
+| 1    | The Godfather               | 1972         | 175     | Crime  | 9.2         | Francis Ford Coppola    | Marlon Brando      | 1620367     | 134966411.0 | 100.0     | 1.0        |
+| 2    | The Dark Knight            | 2008         | 152     | Action | 9.0         | Christopher Nolan       | Christian Bale     | 2303232     | 534858444.0 | 84.0      | 1.0        |
+| 3    | The Godfather: Part II     | 1974         | 202     | Crime  | 9.0         | Francis Ford Coppola    | Al Pacino          | 1129952     | 57300000.0  | 90.0      | 2.5        |
+| 4    | 12 Angry Men               | 1957         | 96      | Crime  | 9.0         | Sidney Lumet            | Henry Fonda        | 689845      | 4360000.0   | 96.0      | 2.5        |
+
+
+
+#### 3. Find normalized IMDB rating group wise
+
+``` py
+def normal(group):
+  group['norm_rating'] = (group['IMDB_Rating'] - group['IMDB_Rating'].min())/(group['IMDB_Rating'].max() - group['IMDB_Rating'].min())
+  return group
+
+genres.apply(normal)
+```
+
+> Output
+
+ Index | Series_Title                  | Released_Year | Runtime | Genre  | IMDB_Rating | Director                | Star1              | No_of_Votes | Gross        | Metascore | norm_rating |
+|------|------------------------------|--------------|---------|--------|-------------|-------------------------|--------------------|-------------|-------------|-----------|-------------|
+| 0    | The Shawshank Redemption     | 1994         | 142     | Drama  | 9.3         | Frank Darabont          | Tim Robbins        | 2343110     | 28341469.0  | 80.0      | 1.000       |
+| 1    | The Godfather               | 1972         | 175     | Crime  | 9.2         | Francis Ford Coppola    | Marlon Brando      | 1620367     | 134966411.0 | 100.0     | 1.000       |
+| 2    | The Dark Knight            | 2008         | 152     | Action | 9.0         | Christopher Nolan       | Christian Bale     | 2303232     | 534858444.0 | 84.0      | 1.000       |
+| 3    | The Godfather: Part II     | 1974         | 202     | Crime  | 9.0         | Francis Ford Coppola    | Al Pacino          | 1129952     | 57300000.0  | 90.0      | 0.875       |
+| 4    | 12 Angry Men               | 1957         | 96      | Crime  | 9.0         | Sidney Lumet            | Henry Fonda        | 689845      | 4360000.0   | 96.0      | 0.875       |
+
+---
+
+## # GroupBy on Multiple Columns
+
+- To group by multiple columns, you simply pass a list of column names to the groupby() function.
+- Example :
+
+``` py
+duo = movies.groupby(['Director','Star1'])
+duo                                # Output : <pandas.api.typing.DataFrameGroupBy object at 0x00000220FA886F50>
+```
+
+- Size 
+
+``` py
+duo.size()
+
+# Output
+
+# Director             Star1         
+# Aamir Khan           Amole Gupte       1
+# Aaron Sorkin         Eddie Redmayne    1
+# Abdellatif Kechiche  Léa Seydoux       1
+# Abhishek Chaubey     Shahid Kapoor     1
+# Abhishek Kapoor      Amit Sadh         1
+# ...
+# Zaza Urushadze       Lembit Ulfsak     1
+# Zoya Akhtar          Hrithik Roshan    1
+#                      Vijay Varma       1
+# Çagan Irmak          Çetin Tekindor    1
+# Ömer Faruk Sorak     Cem Yilmaz        1
+# Length: 898, dtype: int64
+```
+
+- Get Group
+
+``` py
+duo.get_group(('Aamir Khan','Amole Gupte'))
+```
+> Output
+
+| Index | Series_Title        | Released_Year | Runtime | Genre | IMDB_Rating | Director   | Star1        | No_of_Votes | Gross      | Metascore |
+|------|--------------------|--------------|---------|-------|-------------|------------|--------------|-------------|------------|-----------|
+| 65   | Taare Zameen Par   | 2007         | 165     | Drama | 8.4         | Aamir Khan | Amole Gupte  | 168895      | 1223869.0  | NaN       |
+
+
+### Questions 
+
+``` py
+movies = pd.read_csv('imdb-top-1000.csv')
+movies
+```
+
+#### 1. Find the most earning actor --> director combo
+
+``` py
+duo['Gross'].sum().sort_values(ascending=False).head(1)
+
+# Output
+
+# Director        Star1         
+# Akira Kurosawa  Toshirô Mifune    2.999877e+09
+# Name: Gross, dtype: float64
+```
+
+#### 2. Find the best(in-terms of metascore(avg)) actor --> genre combo
+
+``` py
+movies.groupby(['Star1','Genre'])['Metascore'].mean().reset_index().sort_values('Metascore',ascending=False).head(1)
+```
+
+> Output
+
+| Index | Star1            | Genre | Metascore |
+|------|------------------|-------|-----------|
+| 230  | Ellar Coltrane   | Drama | 100.0     |
+
+
+#### 3. Aggregate function on multiple groupby
+
+``` py
+duo.agg(['min','max','mean'])
+```
+> Output
+
+| Director | Star1 | Runtime |        |        | IMDB_Rating |        |        | No_of_Votes |        |        | Gross |        |        | Metascore |        |        |
+|----------|-------|---------|--------|--------|-------------|--------|--------|-------------|--------|--------|-------|--------|--------|-----------|--------|--------|
+|          |       | min     | max    | mean   | min         | max    | mean   | min         | max    | mean   | min   | max    | mean   | min       | max    | mean   |
+| Aamir Khan | Amole Gupte | 165 | 165 | 165.0 | 8.4 | 8.4 | 8.4 | 168895 | 168895 | 168895.0 | 1223869.0 | 1223869.0 | 1223869.0 | NaN | NaN | NaN |
+| Aaron Sorkin | Eddie Redmayne | 129 | 129 | 129.0 | 7.8 | 7.8 | 7.8 | 89896 | 89896 | 89896.0 | 853090410.0 | 853090410.0 | 853090410.0 | 77.0 | 77.0 | 77.0 |
+| Abdellatif Kechiche | Léa Seydoux | 180 | 180 | 180.0 | 7.7 | 7.7 | 7.7 | 138741 | 138741 | 138741.0 | 2199675.0 | 2199675.0 | 2199675.0 | 89.0 | 89.0 | 89.0 |
+| Abhishek Chaubey | Shahid Kapoor | 148 | 148 | 148.0 | 7.8 | 7.8 | 7.8 | 27175 | 27175 | 27175.0 | 218428303.0 | 218428303.0 | 218428303.0 | NaN | NaN | NaN |
+| Abhishek Kapoor | Amit Sadh | 130 | 130 | 130.0 | 7.7 | 7.7 | 7.7 | 32628 | 32628 | 32628.0 | 1122527.0 | 1122527.0 | 1122527.0 | 40.0 | 40.0 | 40.0 |
+
+
+
+
+
+
+
+
+
+
 
 
 
