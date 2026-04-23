@@ -465,6 +465,9 @@ movies.groupby(['Star1','Genre'])['Metascore'].mean().reset_index().sort_values(
 #### 3. Aggregate function on multiple groupby
 
 ``` py
+duo = movies.groupby(['Director','Star1'])
+duo
+
 duo.agg(['min','max','mean'])
 ```
 > Output
